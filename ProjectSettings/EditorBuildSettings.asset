@@ -6,9 +6,12 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/Scenes/SampleScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/VW_Assets/Scenes/TestRichard.unity
     guid: 6956dd3ebdeb0c244be3688d2f6039d6
+  - enabled: 1
+    path: Assets/VW_Assets/Scenes/uiTest.unity
+    guid: 5e64909dfd9e3d444865fd9128a0d0f8
   m_configObjects: {}
