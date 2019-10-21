@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Oculus;
 
-public class GameManagerTest : MonoBehaviour
+public class GuardianManager : MonoBehaviour
 {
     public GameObject cubeprefab;
     public OVRBoundary boundary;
@@ -19,59 +19,77 @@ public class GameManagerTest : MonoBehaviour
     }
 
     [SerializeField]
-    private float max_guardian_height = 5;
+    private float max_height = 5;
+    public float Max_height
+    {
+        get { return max_height; }
+        set { this.max_height = value; }
+    }
 
     [SerializeField]
-    private float min_guardian_height = 0.5f;
+    private float min_height = 0.5f;
+    public float Min_height
+    {
+        get { return min_height; }
+        set { this.min_height = value; }
+    }
 
     [SerializeField]
-    private float max_dist_gardian = 2;
+    private float max_dist = 2;
+    public float Max_dist
+    {
+        get { return max_dist; }
+        set { this.max_dist = value; }
+    }
+
 
     [SerializeField]
-    private float min_dist_gardian = 0.5f;
+    private float min_dist = 0.5f;
+    public float Min_dist
+    {
+        get { return min_dist; }
+        set { this.min_dist = value; }
+    }
+
 
     private GameObject guardian;
     private Mesh mesh;
 
-    private Camera main_camera;
+    List<GFilter> filters;
 
     // Start is called before the first frame update
     void Start()
     {
         List<Vector3> boundary_vertices = new List<Vector3>();
-        guardian_height = max_guardian_height;
+        guardian_height = max_height;
 
-       /* boundary_vertices.Add(new Vector3(5, 0, 5));
-        boundary_vertices.Add(new Vector3(-5, 0, 5));
-        boundary_vertices.Add(new Vector3(-5, 0, -5));
-        boundary_vertices.Add(new Vector3(5, 0, -5));*/
+         boundary_vertices.Add(new Vector3(5, 0, 5));
+         boundary_vertices.Add(new Vector3(-5, 0, 5));
+         boundary_vertices.Add(new Vector3(-5, 0, -5));
+         boundary_vertices.Add(new Vector3(5, 0, -5));
 
-        boundary =  OVRManager.boundary;
+      /*  boundary =  OVRManager.boundary;
 
         for (int i = 0; i < boundary.GetGeometry(OVRBoundary.BoundaryType.OuterBoundary).Length; i++)
         {
             Vector3 vec = boundary.GetGeometry(OVRBoundary.BoundaryType.OuterBoundary)[i];
             vec.y = 0;
             boundary_vertices.Add(vec);
-        }
+        }*/
         drawGuardian(boundary_vertices);
 
-        main_camera = Camera.main;
+        filters = new List<GFilter>();
+
+        filters.Add(new GFilterHeightByDist(guardian, max_height, min_height, max_dist, min_dist));
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
         Debug.Assert(guardian, "The guardian was not instantiated");
-        Vector3[] vertices = mesh.vertices;
-
-        for(int i = vertices.Length/2; i < vertices.Length; i++)
-        {
-            vertices[i].y = heightFromDist(distToCamera(vertices[i]));
-        }
-
-        mesh.vertices = vertices;
-        mesh.RecalculateNormals();
+        ApplyFilters();
     }
 
     //This function takes as an input a list of vertices that corresponds to a 2D polygon.
@@ -106,31 +124,11 @@ public class GameManagerTest : MonoBehaviour
         mesh.RecalculateNormals();
     }
 
-    //This function returns the distance between a vertex and the camera position in the X/Z plan.
-    float distToCamera(Vector3 point)
+    private void ApplyFilters()
     {
-        return Vector2.Distance(new Vector2(point.x,point.z), new Vector2(main_camera.transform.position.x, main_camera.transform.position.z));
+        foreach(var filter in filters){
+            filter.Apply();
+        }
     }
 
-    //This function is a decreasing linear function that projects [min_dist_guardian,max_dist_guardian] to [0,1].
-    float distRatio(float dist)
-    {
-        return (dist - max_dist_gardian) / (min_dist_gardian - max_dist_gardian);
-    }
-
-    float heightFromDist(float dist)
-    {
-        if (dist <= min_dist_gardian)
-        {
-            return max_guardian_height;
-        }
-        else if (dist >= max_dist_gardian)
-        {
-            return min_guardian_height;
-        }
-        else
-        {
-            return min_guardian_height + (max_dist_gardian - min_guardian_height) * distRatio(dist);
-        }
-    }
 }

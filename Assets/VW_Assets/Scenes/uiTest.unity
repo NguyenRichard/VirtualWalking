@@ -1219,7 +1219,7 @@ GameObject:
   - component: {fileID: 2090190877}
   - component: {fileID: 2090190878}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: GuardianManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1255,10 +1255,10 @@ MonoBehaviour:
     type: 3}
   guardian_prefab: {fileID: 6981155179156918780, guid: 40aab9c6c2c804a489bf9a451aff3d00,
     type: 3}
-  max_guardian_height: 3
-  min_guardian_height: 0.1
-  max_dist_gardian: 3
-  min_dist_gardian: 0.2
+  max_height: 5
+  min_height: 0.5
+  max_dist: 2
+  min_dist: 0.5
 --- !u!4 &423366339796638344
 Transform:
   m_ObjectHideFlags: 0
