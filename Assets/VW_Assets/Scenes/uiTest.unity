@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.54280555, g: 0.50586325, b: 0.523744, a: 1}
+  m_IndirectSpecularColor: {r: 0.54281515, g: 0.5058709, b: 0.5237474, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1253,6 +1253,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cubeprefab: {fileID: 423366339853262738, guid: c92adc84f766d304da0fc4c01f344e37,
     type: 3}
+  guardian_prefab: {fileID: 6981155179156918780, guid: 40aab9c6c2c804a489bf9a451aff3d00,
+    type: 3}
+  max_guardian_height: 3
+  min_guardian_height: 0.1
+  max_dist_gardian: 3
+  min_dist_gardian: 0.2
 --- !u!4 &423366339796638344
 Transform:
   m_ObjectHideFlags: 0
