@@ -122,6 +122,8 @@ public class GuardianManager : MonoBehaviour
         mesh.vertices = vertices;
         mesh.triangles = triangles;
         mesh.RecalculateNormals();
+
+        guardian.AddComponent<CustomGuardianData>();
     }
 
     private void ApplyFilters()

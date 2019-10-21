@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GFilterHeightByDist : GFilter 
 {
@@ -28,11 +26,7 @@ public class GFilterHeightByDist : GFilter
     }
 
 
-    //This function returns the distance between a vertex and the camera position in the X/Z plan.
-    float distToCamera(Vector3 point)
-    {
-        return Vector2.Distance(new Vector2(point.x, point.z), new Vector2(main_camera.transform.position.x, main_camera.transform.position.z));
-    }
+
 
     //This function is a decreasing linear function that projects [min_dist_guardian,max_dist_guardian] to [0,1].
     float distRatio(float dist)
@@ -60,11 +54,12 @@ public class GFilterHeightByDist : GFilter
     {
 
         Debug.Assert(_guardian, "The guardian was not instantiated");
-        Vector3[] vertices = _mesh.vertices;
+        Vector3[] vertices = _guardian.Vertices;
 
-        for (int i = vertices.Length / 2; i < vertices.Length; i++)
+        for (int i = 0; i < vertices.Length/2; i++)
         {
-            vertices[i].y = heightFromDist(distToCamera(vertices[i]));
+            vertices[i+vertices.Length / 2].y = heightFromDist(_guardian.Distances[i]);
+
         }
 
         _mesh.vertices = vertices;
