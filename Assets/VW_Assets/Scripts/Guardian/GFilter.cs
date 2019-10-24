@@ -4,13 +4,13 @@ using UnityEngine;
 
 public abstract class GFilter
 {
-    protected CustomGuardianData _guardian;
+    protected CustomGuardianData _guardianData;
     protected Mesh _mesh;
 
-    public GFilter(GameObject guardian)
+    protected GFilter(GameObject guardian)
     { 
-        _guardian = guardian.GetComponent<CustomGuardianData>();
-        Debug.Assert(_guardian, "The guardian was not instantiated");
+        _guardianData = guardian.GetComponent<CustomGuardianData>();
+        Debug.Assert(_guardianData, "The guardian was not instantiated");
         _mesh = guardian.GetComponent<MeshFilter>().mesh;
     }
 

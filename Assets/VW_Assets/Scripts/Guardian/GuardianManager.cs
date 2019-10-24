@@ -52,6 +52,12 @@ public class GuardianManager : MonoBehaviour
     }
 
 
+    [SerializeField]
+    private Color _colorNear;
+    
+    [SerializeField]
+    private Color _colorFar;
+
     private GameObject guardian;
     private Mesh mesh;
 
@@ -81,6 +87,8 @@ public class GuardianManager : MonoBehaviour
         filters = new List<GFilter>();
 
         filters.Add(new GFilterHeightByDist(guardian, max_height, min_height, max_dist, min_dist));
+        filters.Add(new GFilterRGBAByDist(guardian, _colorNear, _colorFar, max_dist, min_dist));
+
 
 
     }

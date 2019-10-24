@@ -7,6 +7,12 @@ public class CustomGuardianData : MonoBehaviour
     private Transform _camera;
     private Mesh _customGuardianMesh;
 
+    public Color[] _verticesColor;
+    public Color[] VerticesColor
+    {
+        get { return _verticesColor; }
+    }
+
     private Vector3[] _vertices;
     public Vector3[] Vertices
     {
@@ -32,6 +38,7 @@ public class CustomGuardianData : MonoBehaviour
         _customGuardianMesh = gameObject.GetComponent<MeshFilter>().mesh;
         _vertices = _customGuardianMesh.vertices;
         _distances = new float[_vertices.Length / 2];
+        _verticesColor = _customGuardianMesh.colors;
 
     }
 
@@ -53,6 +60,7 @@ public class CustomGuardianData : MonoBehaviour
 
 
         _customGuardianMesh.vertices = _vertices;
+        _customGuardianMesh.colors = _verticesColor;
         _customGuardianMesh.RecalculateNormals();
     }
 
