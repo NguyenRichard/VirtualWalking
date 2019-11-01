@@ -54,7 +54,7 @@ public class GuardianManager : MonoBehaviour
 
     [SerializeField]
     private Color _colorNear;
-    
+
     [SerializeField]
     private Color _colorFar;
 
@@ -69,19 +69,19 @@ public class GuardianManager : MonoBehaviour
         List<Vector3> boundary_vertices = new List<Vector3>();
         guardian_height = max_height;
 
-         boundary_vertices.Add(new Vector3(5, 0, 5));
-         boundary_vertices.Add(new Vector3(-5, 0, 5));
-         boundary_vertices.Add(new Vector3(-5, 0, -5));
-         boundary_vertices.Add(new Vector3(5, 0, -5));
+        boundary_vertices.Add(new Vector3(5, 0, 5));
+        boundary_vertices.Add(new Vector3(-5, 0, 5));
+        boundary_vertices.Add(new Vector3(-5, 0, -5));
+        boundary_vertices.Add(new Vector3(5, 0, -5));
 
-      /*  boundary =  OVRManager.boundary;
+        /*  boundary =  OVRManager.boundary;
 
-        for (int i = 0; i < boundary.GetGeometry(OVRBoundary.BoundaryType.OuterBoundary).Length; i++)
-        {
-            Vector3 vec = boundary.GetGeometry(OVRBoundary.BoundaryType.OuterBoundary)[i];
-            vec.y = 0;
-            boundary_vertices.Add(vec);
-        }*/
+          for (int i = 0; i < boundary.GetGeometry(OVRBoundary.BoundaryType.OuterBoundary).Length; i++)
+          {
+              Vector3 vec = boundary.GetGeometry(OVRBoundary.BoundaryType.OuterBoundary)[i];
+              vec.y = 0;
+              boundary_vertices.Add(vec);
+          }*/
         drawGuardian(boundary_vertices);
 
         filters = new List<GFilter>();
@@ -89,6 +89,8 @@ public class GuardianManager : MonoBehaviour
         filters.Add(new GFilterHeightByDist(guardian, max_height, min_height, max_dist, min_dist));
         filters.Add(new GFilterRGBAByDist(guardian, _colorNear, _colorFar, max_dist, min_dist));
 
+        AudioFile _guardianWarningSound = AudioManager.Find("GuardianWarningSound");
+        filters.Add(new GFilterBySound(guardian, _guardianWarningSound, max_dist, min_dist));
 
 
     }
@@ -106,7 +108,7 @@ public class GuardianManager : MonoBehaviour
     {
         guardian = Instantiate(guardian_prefab, Vector3.zero, Quaternion.identity);
         int size = boundary.Count;
-        Vector3[] vertices = new Vector3[size*2];
+        Vector3[] vertices = new Vector3[size * 2];
         int i = 0;
         foreach (var point in boundary)
         {
@@ -115,7 +117,7 @@ public class GuardianManager : MonoBehaviour
             i++;
         }
         int[] triangles = new int[(size) * 6];
-        for(int j = 0; j < size; j++)
+        for (int j = 0; j < size; j++)
         {
             triangles[6 * j] = (j + 1) % size;
             triangles[6 * j + 1] = size + j;
@@ -136,7 +138,8 @@ public class GuardianManager : MonoBehaviour
 
     private void ApplyFilters()
     {
-        foreach(var filter in filters){
+        foreach (var filter in filters)
+        {
             filter.Apply();
         }
     }

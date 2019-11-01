@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.54281515, g: 0.5058709, b: 0.5237474, a: 1}
+  m_IndirectSpecularColor: {r: 0.54280555, g: 0.50586325, b: 0.523744, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1255,10 +1255,116 @@ MonoBehaviour:
     type: 3}
   guardian_prefab: {fileID: 6981155179156918780, guid: 40aab9c6c2c804a489bf9a451aff3d00,
     type: 3}
-  max_guardian_height: 3
-  min_guardian_height: 0.1
-  max_dist_gardian: 3
-  min_dist_gardian: 0.2
+  max_height: 5
+  min_height: 0.5
+  max_dist: 2
+  min_dist: 0.5
+  _colorNear: {r: 0, g: 0, b: 0, a: 0}
+  _colorFar: {r: 0, g: 0, b: 0, a: 0}
+--- !u!1 &2094386359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2094386361}
+  - component: {fileID: 2094386360}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2094386360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094386359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2358d9b2bf59a0c409bd8e62cd0469a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioFiles:
+  - audioName: GuardianWarningSound
+    audioClip: {fileID: 8300000, guid: b5a2bbfddd9ac2047a8d94e697fa01cc, type: 3}
+    volume: 0.5
+    source: {fileID: 0}
+    isLooping: 0
+    playOnAwake: 0
+  - audioName: 
+    audioClip: {fileID: 0}
+    volume: 0
+    source: {fileID: 0}
+    isLooping: 0
+    playOnAwake: 0
+  - audioName: 
+    audioClip: {fileID: 0}
+    volume: 0
+    source: {fileID: 0}
+    isLooping: 0
+    playOnAwake: 0
+  - audioName: 
+    audioClip: {fileID: 0}
+    volume: 0
+    source: {fileID: 0}
+    isLooping: 0
+    playOnAwake: 0
+  - audioName: 
+    audioClip: {fileID: 0}
+    volume: 0
+    source: {fileID: 0}
+    isLooping: 0
+    playOnAwake: 0
+  - audioName: 
+    audioClip: {fileID: 0}
+    volume: 0
+    source: {fileID: 0}
+    isLooping: 0
+    playOnAwake: 0
+  - audioName: 
+    audioClip: {fileID: 0}
+    volume: 0
+    source: {fileID: 0}
+    isLooping: 0
+    playOnAwake: 0
+  - audioName: 
+    audioClip: {fileID: 0}
+    volume: 0
+    source: {fileID: 0}
+    isLooping: 0
+    playOnAwake: 0
+  - audioName: 
+    audioClip: {fileID: 0}
+    volume: 0
+    source: {fileID: 0}
+    isLooping: 0
+    playOnAwake: 0
+  - audioName: 
+    audioClip: {fileID: 0}
+    volume: 0
+    source: {fileID: 0}
+    isLooping: 0
+    playOnAwake: 0
+--- !u!4 &2094386361
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094386359}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &423366339796638344
 Transform:
   m_ObjectHideFlags: 0
