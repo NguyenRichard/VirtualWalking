@@ -29,8 +29,8 @@ public class GFilterRGBAByDist : GFilterByDistance
         
         for(int i = 0; i < verticesColor.Length/2; i++)
         {
-            verticesColor[i] = Color.Lerp(_colorNear, _colorFar, distRatio(_guardianData.Distances[i]));
-            verticesColor[i+verticesColor.Length/2] = Color.Lerp(_colorNear, _colorFar, distRatio(_guardianData.Distances[i]));
+            verticesColor[i] = Color.Lerp(_colorFar, _colorNear, distRatio(_guardianData.Distances[i]));
+            verticesColor[i+verticesColor.Length/2] = Color.Lerp(_colorFar, _colorNear, distRatio(_guardianData.Distances[i]));
         }
     }
 }

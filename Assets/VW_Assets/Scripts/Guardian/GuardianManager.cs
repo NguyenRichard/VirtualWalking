@@ -68,20 +68,20 @@ public class GuardianManager : MonoBehaviour
     {
         List<Vector3> boundary_vertices = new List<Vector3>();
         guardian_height = max_height;
-
+/*
         boundary_vertices.Add(new Vector3(5, 0, 5));
         boundary_vertices.Add(new Vector3(-5, 0, 5));
         boundary_vertices.Add(new Vector3(-5, 0, -5));
         boundary_vertices.Add(new Vector3(5, 0, -5));
+        */
+        boundary =  OVRManager.boundary;
 
-        /*  boundary =  OVRManager.boundary;
-
-          for (int i = 0; i < boundary.GetGeometry(OVRBoundary.BoundaryType.OuterBoundary).Length; i++)
-          {
-              Vector3 vec = boundary.GetGeometry(OVRBoundary.BoundaryType.OuterBoundary)[i];
-              vec.y = 0;
-              boundary_vertices.Add(vec);
-          }*/
+        for (int i = 0; i < boundary.GetGeometry(OVRBoundary.BoundaryType.OuterBoundary).Length; i++)
+        {
+            Vector3 vec = boundary.GetGeometry(OVRBoundary.BoundaryType.OuterBoundary)[i];
+            vec.y = 0;
+            boundary_vertices.Add(vec);
+        }
         drawGuardian(boundary_vertices);
 
         filters = new List<GFilter>();
