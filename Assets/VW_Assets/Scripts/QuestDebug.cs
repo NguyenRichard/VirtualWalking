@@ -26,7 +26,7 @@ public class QuestDebug : MonoBehaviour
         var rt = DebugUIBuilder.instance.AddLabel("Debug");
         logText = rt.GetComponent<Text>();
 
-        var sliderPrefab = DebugUIBuilder.instance.AddSlider("Slider", 0f, 100.0f, SliderPressed, true);
+        var sliderPrefab = DebugUIBuilder.instance.AddSlider("Slider", 50f, 100.0f, SliderPressed, true);
         var textElementsInSlider = sliderPrefab.GetComponentsInChildren<Text>();
         Assert.AreEqual(textElementsInSlider.Length, 2, "Slider prefab format requires 2 text components (label + value)");
         sliderText = textElementsInSlider[1];
