@@ -70,7 +70,8 @@ public class AudioManager : MonoBehaviour
 
         else
         {
-            s.source.Play();
+            if (!s.source.isPlaying)
+                s.source.Play();
         }
     }
 
