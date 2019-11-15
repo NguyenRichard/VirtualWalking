@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class GFilterBySound : GFilterByDistance
 {
-    private float _max_dist = 0.2f;
+    private float _max_dist = 1f;
 
-    private float _min_dist = 0.5f;
+    private float _min_dist = 0.2f;
 
     private AudioFile _guardianWarningSound;
 

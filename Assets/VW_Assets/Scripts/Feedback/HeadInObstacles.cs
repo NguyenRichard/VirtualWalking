@@ -3,12 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeadInWall  : Feedback
+public class HeadInObstacles  : Feedback
 {
-    [SerializeField]
-    [OnChangedCall("UpdateDist")]
     ///Distance where the black screen start to appear.
-    private float dist;
+    [SerializeField]
+    private float dist = 0;
     public float Dist
     {
         get { return dist; }
@@ -21,15 +20,15 @@ public class HeadInWall  : Feedback
 
     }
 
-    private void UpdateDist()
+    public void UpdateDist()
     {
         throw new NotImplementedException();
     }
 
+    ///Volume of the sound when you are in the obstacles.
     [SerializeField]
-    [OnChangedCall("UpdateVolume")]
-    ///Distance where the black screen start to appear.
-    private float volume;
+    [Range(0.0f, 1.0f)]
+    private float volume = 0;
     public float Volume
     {
         get { return volume; }
@@ -42,29 +41,32 @@ public class HeadInWall  : Feedback
 
     }
 
-    private void UpdateVolume()
+    public void UpdateVolume()
     {
         if (volume < 0)
         {
-            volume = 0;
+            volume = 0f;
         }
         else if (volume > 1)
         {
-            volume = 1;
+            volume = 1f;
         }
-        sound.volume = volume;
+
+        sound.source.volume = volume;
+
     }
 
-    AudioFile sound;
+    private AudioFile sound;
 
     protected override void InitScene()
     {
         sound = AudioManager.Find("InObstaclesWarningSound");
-        Debug.Assert(sound != null, "Couldn't find the sound InObstaclesWarningSound");
+        Debug.Assert(sound!=null, "Couldn't find the sound InObstaclesWarningSound");
 
-        UnityEngine.Object prefabHeadCollider = Resources.Load("Assets/VW_Assets/Prefabs/HeadCollider");
+        var prefabHeadCollider = Resources.Load<GameObject>("Prefabs/HeadCollider");
         Debug.Assert(prefabHeadCollider, "Couldn't find the HeadCollider prefabs in Assets.");
-        GameObject headCollider = (GameObject)GameObject.Instantiate(prefabHeadCollider, Vector3.zero, Quaternion.identity);
+        GameObject headCollider = Instantiate(prefabHeadCollider, Vector3.zero, Quaternion.identity);
+        Debug.Assert(headCollider, "Couldn't instantiate headCollider");
 
         GameObject centerEyeAnchor = GameObject.Find("OVRPlayerController/OVRCameraRig/TrackingSpace/CenterEyeAnchor");
         Debug.Assert(centerEyeAnchor, "You must add OVRPlayerController because its child CenterEyeAnchor is needed.");
@@ -72,7 +74,16 @@ public class HeadInWall  : Feedback
 
         components.Add(headCollider);
 
+        isInit = true;
+        UpdateParameters();
+
     }
 
+    protected override void UpdateParameters()
+    {
+        // UpdateDist();
+        UpdateVolume();
+        SwitchActiveState();
+    }
 
 }

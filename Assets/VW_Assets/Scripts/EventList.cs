@@ -26,7 +26,8 @@ public class EventList : MonoBehaviour
 
     public void MakeSound()
     {
-            AudioManager.PlaySFX("Wall");
+        Debug.Log("makesound");
+       // AudioManager.PlaySFX("InObstaclesWarningSound");
        
     }
 

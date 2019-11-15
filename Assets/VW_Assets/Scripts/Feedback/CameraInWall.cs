@@ -10,7 +10,6 @@ public class CameraInWall : MonoBehaviour
 
     [SerializeField]
     private bool isInWall = false;
-    public EventList eventList;
 
     public GameObject blackScreen;
 
@@ -19,9 +18,8 @@ public class CameraInWall : MonoBehaviour
         if (isInWall)
         {
             blackScreen.SetActive(true);
-            eventList.MakeSound();
-            eventList.TriggerVibration(40, 1, 255, OVRInput.Controller.LTouch);
-            eventList.TriggerVibration(40, 1, 255, OVRInput.Controller.RTouch);
+            AudioManager.PlaySFX("InObstaclesWarningSound");
+            
         }
         else
         {
@@ -30,7 +28,7 @@ public class CameraInWall : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        other.gameObject.GetComponent<Renderer>().enabled = false;
+        // other.gameObject.GetComponent<Renderer>().enabled = false;
         if (other.gameObject.tag == "wall")
         {
             isInWall = true;

@@ -10,7 +10,7 @@ public class AudioFile
     public string audioName;
     public AudioClip audioClip;
 
-    [Range(0f, 1f)]
+    [HideInInspector]
     public float volume;
 
     [HideInInspector]

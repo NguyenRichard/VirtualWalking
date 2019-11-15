@@ -130,6 +130,7 @@ public class AudioManager : MonoBehaviour
 
     public static AudioFile Find(string name)
     {
+        Debug.Assert(instance, "NOT INITIALIZED");
         AudioFile s = Array.Find(instance.audioFiles, AudioFile => AudioFile.audioName == name);
 
         if (s is null)
