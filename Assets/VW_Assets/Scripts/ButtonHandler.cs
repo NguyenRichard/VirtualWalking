@@ -18,7 +18,6 @@ struct SetupButton
 [RequireComponent(typeof(SceneOrganizer))]
 public class ButtonHandler : MonoBehaviour
 {
-
     [SerializeField] SetupButton[] _setupButtons;
     int _wallSetupStateId;
     int _ceilingSetupId;
@@ -26,7 +25,7 @@ public class ButtonHandler : MonoBehaviour
     Texture _pressedTxtr;
 
     Dictionary<GameObject, int> _buttonList;
-
+    
     void Start()
     {
         foreach (SetupButton s in _setupButtons)

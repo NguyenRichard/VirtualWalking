@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 856755097845056144}
   - component: {fileID: 856755097845056145}
   m_Layer: 0
-  m_Name: SphereCollider
+  m_Name: HandCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -58,5 +58,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   left: 0
+  intensity: 255
   isInWall: 0
   eventList: {fileID: 0}
