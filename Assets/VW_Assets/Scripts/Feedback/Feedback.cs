@@ -32,7 +32,7 @@ public abstract class Feedback : MonoBehaviour
         }
         else
         {
-            Desactivate();
+            Deactivate();
         }
     }
 
@@ -56,20 +56,27 @@ public abstract class Feedback : MonoBehaviour
 
     private void OnDisable()
     {
-        Desactivate();
+        Deactivate();
     }
 
     private void Activate()
     {
         foreach(var component in components){
-            component.SetActive(true);
+            if(component != null)
+            {
+                component.SetActive(true);
+            }
+
         }
     }
-    private void Desactivate()
+    private void Deactivate()
     {
         foreach(var component in components)
         {
-            component.SetActive(false);
+            if (component != null)
+            {
+                component.SetActive(false);
+            }
         }
     }
 

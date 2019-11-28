@@ -4,8 +4,34 @@ using UnityEngine;
 
 public class HandInWall : MonoBehaviour
 {
+
+
     [SerializeField]
-    private bool left;
+    private bool left = false;
+    public bool Left
+    {
+        get { return left; }
+
+        set
+        {
+            left = value;
+        }
+
+    }
+
+    [SerializeField]
+    private int intensity = 255;
+    public int Intensity
+    {
+        get { return intensity; }
+
+        set
+        {
+            intensity = value;
+        }
+
+    }
+
     //Script a appliquer sur un gameObject contenant un Sphere Collider
     //Le booleen isInWall prend la valeur true si cette sphere entre dans un objet possédant le tag wall.
 
@@ -13,6 +39,13 @@ public class HandInWall : MonoBehaviour
     private bool isInWall = false;
     public EventList eventList;
 
+    private void Start()
+    {
+        GameObject gameManager = GameObject.Find("GameManager");
+        Debug.Assert(gameManager, "You must add gameManager because its eventList is needed.");
+        eventList = gameManager.GetComponent<EventList>();
+        Debug.Assert(eventList, "Could'nt get the EventList from the GameManager");
+    }
 
     void Update()
     {
@@ -20,11 +53,11 @@ public class HandInWall : MonoBehaviour
         {
             if (left)
             {
-                eventList.TriggerVibration(40, 1, 255, OVRInput.Controller.LTouch);
+                eventList.TriggerVibration(40, 1, intensity, OVRInput.Controller.LTouch);
             }
             else
             {
-                eventList.TriggerVibration(40, 1, 255, OVRInput.Controller.RTouch);
+                eventList.TriggerVibration(40, 1, intensity, OVRInput.Controller.RTouch);
             }
 
 
@@ -32,6 +65,7 @@ public class HandInWall : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("------------------------- Collision ---------------------------------");
         if (other.gameObject.tag == "wall")
         {
             isInWall = true;
