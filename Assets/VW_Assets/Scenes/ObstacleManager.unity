@@ -180,6 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
+  intensity: 255
 --- !u!1 &223974226
 GameObject:
   m_ObjectHideFlags: 0

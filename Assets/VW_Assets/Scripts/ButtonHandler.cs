@@ -4,7 +4,7 @@ using UnityEngine;
 
 
 /// <summary>
-/// This script shall be added as a component on each of the player's hands.
+/// This script shall be added as a component on the ControlPanel.
 /// It references the buttons displayed on the Control Panel and their alternative states.
 /// Finally it stores the Scene Setup IDs and make them accessible for the SceneOrganizer.
 /// </summary>
@@ -12,48 +12,44 @@ using UnityEngine;
 struct SetupButton
 {
     public GameObject button;
-    public int buttonId;
+    public bool buttonState;
 }
 
-[RequireComponent(typeof(SceneOrganizer))]
+[RequireComponent(typeof(TunnelSpecsHandler))]
 public class ButtonHandler : MonoBehaviour
 {
 
     [SerializeField] SetupButton[] _setupButtons;
-    int _wallSetupStateId;
-    int _ceilingSetupId;
+    public int setupId;
     Texture _basicTxtr;
     Texture _pressedTxtr;
 
-    Dictionary<GameObject, int> _buttonList;
+    Dictionary<GameObject, bool> _buttonList;
 
     void Start()
     {
         foreach (SetupButton s in _setupButtons)
         {
-            _buttonList.Add(s.button, s.buttonId);
+            _buttonList.Add(s.button, s.buttonState);
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    void UpdateButtonState()
     {
-        // Try to get the button Id and stores is in the given field if the colliding object is in the buttonList
-        // Returns true if successful, false otherwise
-        Vector2 oldIDs = new Vector2(_wallSetupStateId, _ceilingSetupId);
-        int newID;
-        if (_buttonList.TryGetValue(other.gameObject, out newID))
+        foreach (GameObject g in _buttonList.Keys)
         {
-            if (newID <= 3)
-            {
-                _wallSetupStateId = _wallSetupStateId == newID ? 0 : newID;
-            }
-            else
-            {
-                _ceilingSetupId = _ceilingSetupId == newID ? 0 : newID;
-            }
-            // Change material accordingly
-            Material buttonMat = other.gameObject.GetComponent<Material>();
-            buttonMat.mainTexture = buttonMat.mainTexture == _basicTxtr ? _pressedTxtr : _basicTxtr;
+            _buttonList[g] = false;
         }
+        foreach (GameObject g in _buttonList.Keys)
+        {
+            ButtonTrigger bt = g.GetComponent<ButtonTrigger>();
+            if (bt.enabled  && !_buttonList.ContainsValue(true))
+            {
+                _buttonList[g] = true;
+                setupId = bt.id;
+            }
+            transform.parent.SendMessage("Setup");
+        }
+
     }
 }
