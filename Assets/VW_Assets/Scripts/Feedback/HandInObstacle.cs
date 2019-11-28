@@ -4,6 +4,38 @@ using UnityEngine;
 
 public class HandInObstacle : Feedback
 {
+    ///Volume of the sound when you are in the obstacles.
+    [SerializeField]
+    [Range(0, 255)]
+    private int intensity = 255;
+    public int Intensity
+    {
+        get { return intensity; }
+
+        set
+        {
+            intensity = value;
+            UpdateIntensity();
+        }
+
+    }
+
+    public void UpdateIntensity()
+    {
+        if (intensity < 0)
+        {
+            intensity = 0;
+        }
+        else if (intensity > 255)
+        {
+            intensity = 255;
+        }
+
+        components[0].GetComponent<HandInWall>().Intensity = intensity;
+        components[1].GetComponent<HandInWall>().Intensity = intensity;
+
+    }
+
     protected override void InitScene()
     {
         var prefabHandCollider = Resources.Load<GameObject>("Prefabs/HandCollider");
@@ -37,5 +69,6 @@ public class HandInObstacle : Feedback
 
     protected override void UpdateParameters()
     {
+        UpdateIntensity();
     }
 }

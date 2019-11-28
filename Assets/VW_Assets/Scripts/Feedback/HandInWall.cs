@@ -19,6 +19,19 @@ public class HandInWall : MonoBehaviour
 
     }
 
+    [SerializeField]
+    private int intensity = 255;
+    public int Intensity
+    {
+        get { return intensity; }
+
+        set
+        {
+            intensity = value;
+        }
+
+    }
+
     //Script a appliquer sur un gameObject contenant un Sphere Collider
     //Le booleen isInWall prend la valeur true si cette sphere entre dans un objet possédant le tag wall.
 
@@ -40,11 +53,11 @@ public class HandInWall : MonoBehaviour
         {
             if (left)
             {
-                eventList.TriggerVibration(40, 1, 255, OVRInput.Controller.LTouch);
+                eventList.TriggerVibration(40, 1, intensity, OVRInput.Controller.LTouch);
             }
             else
             {
-                eventList.TriggerVibration(40, 1, 255, OVRInput.Controller.RTouch);
+                eventList.TriggerVibration(40, 1, intensity, OVRInput.Controller.RTouch);
             }
 
 
