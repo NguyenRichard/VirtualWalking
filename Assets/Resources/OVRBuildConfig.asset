@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   androidSDKPath: C:\Users\lousticos\AppData\Local\Android\Sdk
   gradlePath: 
-  jdkPath:
+  jdkPath: 
