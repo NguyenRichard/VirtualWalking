@@ -28,6 +28,7 @@ public class CameraInWall : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
+        Debug.Log("----------------------- Collision tête -----------------------------");
         // other.gameObject.GetComponent<Renderer>().enabled = false;
         if (other.gameObject.tag == "wall")
         {
