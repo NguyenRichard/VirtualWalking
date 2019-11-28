@@ -27,19 +27,19 @@ public class CameraInWall : MonoBehaviour
         }
     }
     void OnTriggerEnter(Collider other)
-    {
-        // other.gameObject.GetComponent<Renderer>().enabled = false;
+    { 
         if (other.gameObject.tag == "wall")
         {
+            other.gameObject.GetComponent<Renderer>().enabled = false;
             isInWall = true;
         }
     }
 
     void OnTriggerExit(Collider other)
     {
-        other.gameObject.GetComponent<Renderer>().enabled = true;
         if (other.gameObject.tag == "wall")
         {
+            other.gameObject.GetComponent<Renderer>().enabled = true;
             isInWall = false;
         }
     }
