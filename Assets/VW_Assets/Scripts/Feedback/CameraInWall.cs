@@ -27,7 +27,7 @@ public class CameraInWall : MonoBehaviour
         }
     }
     void OnTriggerEnter(Collider other)
-    { 
+    {
         if (other.gameObject.tag == "wall")
         {
             other.gameObject.GetComponent<Renderer>().enabled = false;
