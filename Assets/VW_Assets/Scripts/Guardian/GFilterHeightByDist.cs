@@ -32,7 +32,7 @@ public class GFilterHeightByDist : GFilterByDistance
         }
         else
         {
-            return _min_height + (_max_dist - _min_dist) * distRatio(dist);
+            return _min_height + (_max_height-_min_height) * distRatio(dist);
         }
     }
 
