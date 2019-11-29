@@ -1145,6 +1145,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b680727648e3104bb1c911fcd8363fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _setupButtons:
+  - button: {fileID: 633530969}
+    buttonState: 0
+  - button: {fileID: 398294587}
+    buttonState: 0
+  - button: {fileID: 609982925}
+    buttonState: 0
   setupId: 0
   _buttonActivatedMaterial: {fileID: 2100000, guid: 07e43fc636ccfb046a530baf7496598e,
     type: 2}
@@ -1481,11 +1488,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3708631073185828650, guid: 8847a229305029442b328671311db4a4,
-        type: 3}
-      propertyPath: m_Name
-      value: AudioManager
-      objectReference: {fileID: 0}
     - target: {fileID: 3708631073185828644, guid: 8847a229305029442b328671311db4a4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1555,6 +1557,11 @@ PrefabInstance:
         type: 3}
       propertyPath: audioFiles.Array.data[1].volume
       value: 0.79
+      objectReference: {fileID: 0}
+    - target: {fileID: 3708631073185828650, guid: 8847a229305029442b328671311db4a4,
+        type: 3}
+      propertyPath: m_Name
+      value: AudioManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8847a229305029442b328671311db4a4, type: 3}
@@ -2027,7 +2034,7 @@ BoxCollider:
   m_GameObject: {fileID: 1251889774}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -2878,6 +2885,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b680727648e3104bb1c911fcd8363fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _setupButtons:
+  - button: {fileID: 994043556}
+    buttonState: 0
+  - button: {fileID: 2028328932}
+    buttonState: 0
+  - button: {fileID: 370884267}
+    buttonState: 0
   setupId: 0
   _buttonActivatedMaterial: {fileID: 2100000, guid: 07e43fc636ccfb046a530baf7496598e,
     type: 2}
