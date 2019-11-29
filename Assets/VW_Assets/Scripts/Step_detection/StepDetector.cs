@@ -84,7 +84,7 @@ public class StepDetector : MonoBehaviour {
 
     public void Go()
     {
-        print("coucou");
+        //print("coucou");
 
         pos++;
         PosSinceLastStep++;
