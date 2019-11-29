@@ -8,7 +8,10 @@ public class ButtonTrigger : MonoBehaviour
     public int id;
     private void OnTriggerEnter(Collider other)
     {
-        enabled = !enabled;
-        transform.parent.SendMessage("UpdateButtonState");
+        if (other.CompareTag("HandR") || other.CompareTag("HandL"))
+        {
+            enabled = !enabled;
+            transform.parent.SendMessage("UpdateButtonState");
+        }
     }
 }

@@ -61,6 +61,7 @@ public class ButtonHandler : MonoBehaviour
                 s.button.GetComponent<Renderer>().material = _buttonActivatedMaterial;
                 setupId = bt.id;
             }
+            // Eventuellement, empecher desactivation de tous les boutons
             else
             {
                 bt.enabled = false;
