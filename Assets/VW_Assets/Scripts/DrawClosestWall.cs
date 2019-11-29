@@ -8,18 +8,17 @@ public class DrawClosestWall : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if(WallDistance.closestWallRHand != null)
+        if (WallDistToSphereCollider.closestWallLHand != null)
         {
-            Debug.DrawRay(WallDistance.closestWallRHand.MyClosestPoint, WallDistance.closestWallRHand.Direction, Color.red);
+            Debug.DrawRay(WallDistToSphereCollider.closestWallLHand.WallClosestPoint, WallDistToSphereCollider.closestWallLHand.Direction, Color.red);
         }
-        if (WallDistance.closestWallLHand != null)
+        if (WallDistToSphereCollider.closestWallRHand != null)
         {
-            Debug.DrawRay(WallDistance.closestWallLHand.MyClosestPoint, WallDistance.closestWallLHand.Direction, Color.red);
+            Debug.DrawRay(WallDistToSphereCollider.closestWallRHand.WallClosestPoint, WallDistToSphereCollider.closestWallRHand.Direction, Color.blue);
         }
-        if (WallDistance.closestWallHead != null)
+        if (WallDistToSphereCollider.closestWallHead != null)
         {
-            Debug.DrawRay(WallDistance.closestWallHead.MyClosestPoint, WallDistance.closestWallHead.Direction, Color.red);
+            Debug.DrawRay(WallDistToSphereCollider.closestWallHead.WallClosestPoint, WallDistToSphereCollider.closestWallHead.Direction, Color.green);
         }
     }
 }
