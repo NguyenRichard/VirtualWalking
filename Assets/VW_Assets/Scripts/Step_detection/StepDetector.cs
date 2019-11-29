@@ -50,7 +50,7 @@ public class StepDetector : MonoBehaviour {
 
         PosSinceLastStep = timeThreshold;
 
-        footstepPrefab = Resources.Load<GameObject>("Prefabs/Sphere");
+        footstepPrefab = Resources.Load<GameObject>("Prefabs/Footstep");
 
         print("aouak");
     }
@@ -107,11 +107,14 @@ public class StepDetector : MonoBehaviour {
                         //Nouveau pas detecte
                         audioSource.PlayOneShot(impact, 1f);
 
-                        Instantiate(footstepPrefab, new Vector3(dm.FiltPositions[pos - 1].x, 0.22f, dm.FiltPositions[pos - 1].z), new Quaternion(0,0,0,1));
+                        GameObject footstep = Instantiate(footstepPrefab, new Vector3(dm.FiltPositions[pos - 1].x, 0.01f, dm.FiltPositions[pos - 1].z), Quaternion.identity);
+                        footstep.transform.rotation = new Quaternion(footstep.transform.rotation.x, Camera.main.transform.rotation.y, footstep.transform.rotation.z, footstep.transform.rotation.w);
+                        footstep.transform.Rotate(90, 0, 0);
+                        
                         /*if(footstepList.Count > stepNumber)
                         {
                             GameObject toDestroy = footstepList[0];
-                            footstepList.Remove(footstepList[0]);
+                            foots tepList.Remove(footstepList[0]);
                             Destroy(toDestroy);
 
                         }*/
