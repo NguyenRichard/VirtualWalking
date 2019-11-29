@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WallDistToSphereCollider : MonoBehaviour
+public class WallDistToPlayer : MonoBehaviour
 {
 
     public static WallData closestWallLHand;
