@@ -107,14 +107,14 @@ public class StepDetector : MonoBehaviour {
                         //Nouveau pas detecte
                         audioSource.PlayOneShot(impact, 1f);
 
-                        footstepList.Add(Instantiate(footstepPrefab, new Vector3(dm.FiltPositions[pos - 1].x, 0.22f, dm.FiltPositions[pos - 1].z), new Quaternion(0,0,0,1)));
-                        if(footstepList.Count > stepNumber)
+                        Instantiate(footstepPrefab, new Vector3(dm.FiltPositions[pos - 1].x, 0.22f, dm.FiltPositions[pos - 1].z), new Quaternion(0,0,0,1));
+                        /*if(footstepList.Count > stepNumber)
                         {
                             GameObject toDestroy = footstepList[0];
                             footstepList.Remove(footstepList[0]);
                             Destroy(toDestroy);
 
-                        }
+                        }*/
 
                         currentStep = new Step(pos - 1, dm.Timer - Time.fixedDeltaTime, new Vector2(dm.FiltPositions[pos - 1].x, dm.FiltPositions[pos - 1].z), 0, LastMaxY - dm.FiltPositions[pos - 1].y);
 
