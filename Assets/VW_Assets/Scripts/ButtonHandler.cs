@@ -43,9 +43,6 @@ public class ButtonHandler : MonoBehaviour
         _buttonStatesList = new List<bool>();
         foreach (SetupButton s in _setupButtons)
         {
-            Debug.Log("Button " + s.button);
-            Debug.Log("ButtonList " + _buttonList);
-           
             _buttonList.Add(s.button, s.buttonState);
             _buttonGameObjectsList.Add(s.button);
             _buttonStatesList.Add(s.buttonState);

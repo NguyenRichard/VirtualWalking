@@ -10,7 +10,7 @@ public class TunnelSpecsHandler : MonoBehaviour
     [SerializeField] GameObject _ceiling;
     [SerializeField] float _ceilingHeightStep = .5f;
     [SerializeField] float _wallWidthStep = .25f;
-    
+
     void Setup()
     {
         WallSetup(_wallButtons.setupId);
@@ -20,13 +20,13 @@ public class TunnelSpecsHandler : MonoBehaviour
 
     void WallSetup(int id)
     {
-        _walls[0].transform.position = new Vector3(_wallWidthStep * id, transform.position.y, transform.position.z);
-        _walls[0].transform.position = new Vector3(_wallWidthStep * id, transform.position.y, transform.position.z);
+        _walls[0].transform.position = new Vector3(-_wallWidthStep * id - 1, _walls[0].transform.position.y, _walls[0].transform.position.z);
+        _walls[1].transform.position = new Vector3(_wallWidthStep * id + 1, _walls[1].transform.position.y, _walls[1].transform.position.z);
     }
 
     void CeilingSetup(int id)
     {
-        _ceiling.transform.position = new Vector3(transform.position.x, 1 + _ceilingHeightStep * id, transform.position.z);
+        _ceiling.transform.position = new Vector3(_ceiling.transform.position.x, 1 + _ceilingHeightStep * id, _ceiling.transform.position.z);
     }
 
 
