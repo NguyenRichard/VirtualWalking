@@ -20,8 +20,8 @@ public class TunnelSpecsHandler : MonoBehaviour
 
     void WallSetup(int id)
     {
-        _walls[0].transform.position = new Vector3(-_wallWidthStep * id - 1, _walls[0].transform.position.y, _walls[0].transform.position.z);
-        _walls[1].transform.position = new Vector3(_wallWidthStep * id + 1, _walls[1].transform.position.y, _walls[1].transform.position.z);
+        _walls[0].transform.position = new Vector3(-_wallWidthStep * id - 0.5f, _walls[0].transform.position.y, _walls[0].transform.position.z);
+        _walls[1].transform.position = new Vector3(_wallWidthStep * id + 0.5f, _walls[1].transform.position.y, _walls[1].transform.position.z);
     }
 
     void CeilingSetup(int id)
