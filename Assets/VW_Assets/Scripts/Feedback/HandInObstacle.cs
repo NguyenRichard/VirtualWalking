@@ -42,9 +42,11 @@ public class HandInObstacle : Feedback
         Debug.Assert(prefabHandCollider, "Couldn't find the HandCollider prefabs in Assets.");
         GameObject handColliderLeft = Instantiate(prefabHandCollider, Vector3.zero, Quaternion.identity);
         Debug.Assert(handColliderLeft, "Couldn't instantiate handColliderLeft");
+        handColliderLeft.tag = "HandL";
         GameObject handColliderRight = Instantiate(prefabHandCollider, Vector3.zero, Quaternion.identity);
         Debug.Assert(handColliderRight, "Couldn't instantiate handColliderRight");
-       
+        handColliderRight.tag = "HandR";
+
         GameObject rightHandAnchor = GameObject.Find("OVRPlayerController/OVRCameraRig/TrackingSpace/RightHandAnchor");
         Debug.Assert(rightHandAnchor, "You must add OVRPlayerController because its child RightHandAnchor is needed.");
         handColliderRight.transform.SetParent(rightHandAnchor.transform);

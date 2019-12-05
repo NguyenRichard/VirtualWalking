@@ -67,6 +67,7 @@ public class HeadInObstacles  : Feedback
         Debug.Assert(prefabHeadCollider, "Couldn't find the HeadCollider prefabs in Assets.");
         GameObject headCollider = Instantiate(prefabHeadCollider, Vector3.zero, Quaternion.identity);
         Debug.Assert(headCollider, "Couldn't instantiate headCollider");
+        headCollider.tag = "Head";
 
         GameObject centerEyeAnchor = GameObject.Find("OVRPlayerController/OVRCameraRig/TrackingSpace/CenterEyeAnchor");
         Debug.Assert(centerEyeAnchor, "You must add OVRPlayerController because its child CenterEyeAnchor is needed.");
