@@ -35,6 +35,7 @@ public class WallDistToPlayer : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("------------------------- On dist enter ---------------------------");
         if (other.tag == "HandL" && leftHandCollider == null)
         {
             leftHandCollider = other.gameObject.GetComponent<Collider>();

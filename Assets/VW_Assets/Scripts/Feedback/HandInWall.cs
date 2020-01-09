@@ -32,6 +32,8 @@ public class HandInWall : MonoBehaviour
 
     }
 
+    private float newIntensity = 0;
+
     //Script a appliquer sur un gameObject contenant un Sphere Collider
     //Le booleen isInWall prend la valeur true si cette sphere entre dans un objet possédant le tag wall.
 
@@ -62,6 +64,29 @@ public class HandInWall : MonoBehaviour
 
 
         }
+        if (left)
+        {
+            if (WallDistToPlayer.closestWallLHand != null)
+            {
+                newIntensity = Vector3.Distance(WallDistToPlayer.closestWallLHand.WallClosestPoint, gameObject.transform.position);
+                newIntensity = Mathf.Lerp(intensity, 0, Mathf.InverseLerp(0, 1.5f, newIntensity));
+                eventList.TriggerVibration(40, 1, (int)newIntensity, OVRInput.Controller.LTouch);
+            }
+        }
+        else
+        {
+            //Debug.Log("--------------------------- right hand -----------------------------");
+            //Debug.Log(WallDistToPlayer.closestWallRHand != null);
+            if (WallDistToPlayer.closestWallRHand != null)
+            {
+                //Debug.Log("---------------------------- wall distance ---------------------");
+                newIntensity = Vector3.Distance(WallDistToPlayer.closestWallLHand.WallClosestPoint, gameObject.transform.position);
+                //Debug.Log("new intensity = " + newIntensity);
+                newIntensity = Mathf.Lerp(intensity, 0, Mathf.InverseLerp(0, 1.5f, newIntensity));
+                eventList.TriggerVibration(40, 1, intensity, OVRInput.Controller.RTouch);
+            }
+        }
+
     }
     void OnTriggerEnter(Collider other)
     {
