@@ -43,7 +43,7 @@ public class CustomGuardianData : MonoBehaviour
     }
 
 
-    void Update()
+    public void UpdateGuardian()
     {
         _indexClosestVertex = 0;
         _closestVertexDistance = distToCamera(_vertices[0]);

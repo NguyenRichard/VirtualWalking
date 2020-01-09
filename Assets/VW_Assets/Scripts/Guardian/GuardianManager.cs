@@ -58,15 +58,22 @@ public class GuardianManager : MonoBehaviour
     [SerializeField]
     private Color _colorFar;
 
+    [SerializeField]
+    private float refreshTime = 1;
+
+    [SerializeField]
+    private Transform sceneOrigin;
+
     private GameObject guardian;
     private Mesh mesh;
 
     List<GFilter> filters;
+    private List<Vector3> boundary_vertices;
 
     // Start is called before the first frame update
     void Start()
     {
-        List<Vector3> boundary_vertices = new List<Vector3>();
+        boundary_vertices = new List<Vector3>();
         guardian_height = max_height;
 
 #if UNITY_EDITOR
@@ -86,10 +93,10 @@ public class GuardianManager : MonoBehaviour
             boundary_vertices.Add(vec);
         }
 #endif
-        drawGuardian(boundary_vertices);
+        createGuardian();
 
         filters = new List<GFilter>();
-
+        filters.Add(new GFilterCalibrate(guardian, refreshTime,sceneOrigin));
         filters.Add(new GFilterHeightByDist(guardian, max_height, min_height, max_dist, min_dist));
         filters.Add(new GFilterRGBAByDist(guardian, _colorNear, _colorFar, max_dist, min_dist));
 
@@ -106,15 +113,25 @@ public class GuardianManager : MonoBehaviour
         ApplyFilters();
     }
 
-    //This function takes as an input a list of vertices that corresponds to a 2D polygon.
-    //From, this list, it will instantiate a wall of a certain height.
-    private void drawGuardian(List<Vector3> boundary)
+    //This function creates the guardian using updateGuardian().
+    private void createGuardian()
     {
         guardian = Instantiate(guardian_prefab, Vector3.zero, Quaternion.identity);
-        int size = boundary.Count;
+
+        updateGuardian();
+
+        guardian.AddComponent<CustomGuardianData>();
+
+    }
+
+    //This function takes as an input a list of vertices that corresponds to a 2D polygon.
+    //From, this list, it will instantiate a wall of a certain height.
+    private void updateGuardian()
+    {
+        int size = boundary_vertices.Count;
         Vector3[] vertices = new Vector3[size * 2];
         int i = 0;
-        foreach (var point in boundary)
+        foreach (var point in boundary_vertices)
         {
             vertices[i] = point;
             vertices[size + i] = new Vector3(0, guardian_height, 0) + point;
@@ -135,9 +152,7 @@ public class GuardianManager : MonoBehaviour
         mesh.Clear();
         mesh.vertices = vertices;
         mesh.triangles = triangles;
-        mesh.RecalculateNormals();
 
-        guardian.AddComponent<CustomGuardianData>();
     }
 
     private void ApplyFilters()
@@ -146,6 +161,8 @@ public class GuardianManager : MonoBehaviour
         {
             filter.Apply();
         }
+
+        GFilter.UpdateGuardian();
     }
 
 }
