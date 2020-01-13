@@ -8,6 +8,18 @@ public class CameraInWall : MonoBehaviour
     //Script a appliquer sur un gameObject contenant un Sphere Collider
     //Le booleen isInWall prend la valeur true si cette sphere entre dans un objet possédant le tag wall.
 
+    private float distMax = 0.25f;
+
+    public float DistMax
+    {
+        get { return distMax; }
+
+        set
+        {
+            distMax = value;
+        }
+    }
+
     [SerializeField]
     private bool isInWall = false;
     private float newIntensity = 0;
@@ -22,13 +34,20 @@ public class CameraInWall : MonoBehaviour
             AudioManager.PlaySFX("InObstaclesWarningSound");
             
         }
+        /*pour changer la transparence de l'écran noir (ne marche pas pour l'instant)
         else if(WallDistToPlayer.closestWallHead != null)
         {
-            newIntensity = Vector3.Distance(WallDistToPlayer.closestWallLHand.WallClosestPoint, gameObject.transform.position);
-            newIntensity = Mathf.Lerp(0, 1, Mathf.InverseLerp(0, 1.5f, newIntensity));
+            blackScreen.SetActive(true);
+            newIntensity = Vector3.Distance(WallDistToPlayer.closestWallHead.WallClosestPoint, gameObject.transform.position);
+            Debug.Log("-------------------- Intensity head = " + newIntensity + " ----------------------------");
+            Debug.Log("******************** Inverse Lerp = " + Mathf.InverseLerp(0, distMax, newIntensity) + "***********************************");
+            newIntensity = Mathf.Lerp(1, 0, Mathf.InverseLerp(0, distMax, newIntensity));
+            //Debug.Log("-------------------- Intensity head = " + newIntensity + " ----------------------------");
             Color baseColor = blackScreen.GetComponent<Renderer>().material.color;
-            blackScreen.GetComponent<Renderer>().material.color = new Color(baseColor.r,baseColor.g,baseColor.b,newIntensity);
-        }
+            baseColor.a = newIntensity;
+            blackScreen.GetComponent<Renderer>().material.color = baseColor;
+            
+        }*/
         else
         {
             blackScreen.SetActive(false);
