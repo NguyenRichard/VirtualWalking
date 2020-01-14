@@ -6,6 +6,7 @@ public class ButtonTrigger : MonoBehaviour
 {
     public bool enabled = false;
     public int id;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("HandR") || other.CompareTag("HandL"))
@@ -13,5 +14,5 @@ public class ButtonTrigger : MonoBehaviour
             enabled = !enabled;
             transform.parent.SendMessage("UpdateButtonState");
         }
-    }
+    }   
 }

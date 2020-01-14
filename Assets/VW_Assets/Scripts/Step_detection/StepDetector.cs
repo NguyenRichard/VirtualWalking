@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class StepDetector : MonoBehaviour {
 
-    public GameObject footstepPrefab;
+    public GameObject leftfootstepPrefab;
+    public GameObject rightfootstepPrefab;
+
+    public GameObject headGameObject;
 
     private List<GameObject> footstepList;
     [SerializeField]
@@ -50,7 +53,8 @@ public class StepDetector : MonoBehaviour {
 
         PosSinceLastStep = timeThreshold;
 
-        footstepPrefab = Resources.Load<GameObject>("Prefabs/Footstep");
+        leftfootstepPrefab = Resources.Load<GameObject>("Prefabs/LeftSphere");
+        rightfootstepPrefab = Resources.Load<GameObject>("Prefabs/RightSphere");
 
         print("aouak");
     }
@@ -107,17 +111,6 @@ public class StepDetector : MonoBehaviour {
                         //Nouveau pas detecte
                         audioSource.PlayOneShot(impact, 1f);
 
-                        GameObject footstep = Instantiate(footstepPrefab, new Vector3(dm.FiltPositions[pos - 1].x, 0.01f, dm.FiltPositions[pos - 1].z), Quaternion.identity);
-                        footstep.transform.rotation = new Quaternion(footstep.transform.rotation.x, Camera.main.transform.rotation.y, footstep.transform.rotation.z, footstep.transform.rotation.w);
-                        footstep.transform.Rotate(90, 0, 0);
-                        
-                        /*if(footstepList.Count > stepNumber)
-                        {
-                            GameObject toDestroy = footstepList[0];
-                            foots tepList.Remove(footstepList[0]);
-                            Destroy(toDestroy);
-
-                        }*/
 
                         currentStep = new Step(pos - 1, dm.Timer - Time.fixedDeltaTime, new Vector2(dm.FiltPositions[pos - 1].x, dm.FiltPositions[pos - 1].z), 0, LastMaxY - dm.FiltPositions[pos - 1].y);
 
@@ -129,6 +122,25 @@ public class StepDetector : MonoBehaviour {
 
                         //Determination du cote du pas
                         currentStep.side = Side();
+                        GameObject footstep;
+                        if (currentStep.side == Step.Side.Left)
+                        {
+                            footstep = Instantiate(leftfootstepPrefab, new Vector3(dm.FiltPositions[pos - 1].x, 0.21f, dm.FiltPositions[pos - 1].z), Quaternion.identity);
+                        }
+                        else
+                        {
+                            footstep = Instantiate(rightfootstepPrefab, new Vector3(dm.FiltPositions[pos - 1].x, 0.21f, dm.FiltPositions[pos - 1].z), Quaternion.identity);
+                        }
+                        footstep.transform.rotation = new Quaternion(footstep.transform.rotation.x, headGameObject.transform.rotation.y, footstep.transform.rotation.z, footstep.transform.rotation.w);
+                        footstep.transform.Rotate(90, 0, 0);
+
+                        /*if(footstepList.Count > stepNumber)
+                        {
+                            GameObject toDestroy = footstepList[0];
+                            foots tepList.Remove(footstepList[0]);
+                            Destroy(toDestroy);
+
+                        }*/
 
                         //Suppression des pas superflus
                         //CleanUp();

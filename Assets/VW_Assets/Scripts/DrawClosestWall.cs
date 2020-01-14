@@ -7,15 +7,18 @@ public class DrawClosestWall : MonoBehaviour
 
     [SerializeField]
     LineRenderer lineLeftHand;
-
+    private float newIntensity = 0;
 
     // Update is called once per frame
     void Update()
     {
         if (WallDistToPlayer.closestWallLHand != null)
         {
-            //Debug.DrawRay(WallDistToPlayer.closestWallLHand.WallClosestPoint, WallDistToPlayer.closestWallLHand.Direction, Color.red);
-
+            Debug.DrawRay(WallDistToPlayer.closestWallLHand.WallClosestPoint, WallDistToPlayer.closestWallLHand.Direction, Color.red);
+            newIntensity = Vector3.Distance(WallDistToPlayer.closestWallLHand.WallClosestPoint, gameObject.transform.position);
+            Mathf.Clamp(newIntensity, 0, 1.5f);
+            newIntensity = Mathf.Lerp(255, 0, Mathf.InverseLerp(0, 1.5f, newIntensity));
+            Debug.Log("intensity : " + newIntensity + " int intensity : " + (int)newIntensity);
         }
      /*   if (WallDistToPlayer.closestWallRHand != null)
         {

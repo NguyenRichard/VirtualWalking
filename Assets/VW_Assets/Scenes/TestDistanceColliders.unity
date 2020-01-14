@@ -165,13 +165,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38dee28a997d2a349a2711cecfe90465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftHandCollider: {fileID: 0}
-  rightHandCollider: {fileID: 0}
-  headCollider: {fileID: 0}
-  colliderWall: {fileID: 0}
-  handLClosestPoint: {x: 0, y: 0, z: 0}
-  handRClosestPoint: {x: 0, y: 0, z: 0}
-  headClosestPoint: {x: 0, y: 0, z: 0}
 --- !u!65 &262828840
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -448,13 +441,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38dee28a997d2a349a2711cecfe90465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftHandCollider: {fileID: 0}
-  rightHandCollider: {fileID: 0}
-  headCollider: {fileID: 0}
-  colliderWall: {fileID: 0}
-  handLClosestPoint: {x: 0, y: 0, z: 0}
-  handRClosestPoint: {x: 0, y: 0, z: 0}
-  headClosestPoint: {x: 0, y: 0, z: 0}
 --- !u!65 &476247889
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -872,9 +858,10 @@ GameObject:
   - component: {fileID: 1041952188}
   - component: {fileID: 1041952187}
   - component: {fileID: 1041952186}
+  - component: {fileID: 1041952190}
   m_Layer: 0
   m_Name: Sphere (1)
-  m_TagString: HandR
+  m_TagString: HandL
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -952,6 +939,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1041952190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041952185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5a17bbbf300d0548a3aa50df7eb19a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lineLeftHand: {fileID: 0}
 --- !u!1 &1256164584
 GameObject:
   m_ObjectHideFlags: 0
@@ -997,13 +997,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38dee28a997d2a349a2711cecfe90465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leftHandCollider: {fileID: 0}
-  rightHandCollider: {fileID: 0}
-  headCollider: {fileID: 0}
-  colliderWall: {fileID: 0}
-  handLClosestPoint: {x: 0, y: 0, z: 0}
-  handRClosestPoint: {x: 0, y: 0, z: 0}
-  headClosestPoint: {x: 0, y: 0, z: 0}
 --- !u!65 &1256164587
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1071,11 +1064,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1379307732}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b5a17bbbf300d0548a3aa50df7eb19a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineLeftHand: {fileID: 0}
 --- !u!1 &1781105568
 GameObject:
   m_ObjectHideFlags: 0

@@ -33,14 +33,12 @@ public class EventList : MonoBehaviour
 
     public void TriggerVibration(int iteration, int frequency, int strength, OVRInput.Controller controller)
     {
-        Debug.Log("************************* TriggerVibration ************************");
         OVRHapticsClip clip = new OVRHapticsClip();
 
         for (int i = 0; i < iteration; i++)
         {
             clip.WriteSample(i % frequency == 0 ? (byte)strength : (byte)0);
         }
-        Debug.Log("************************* beginning preempt ************************");
         if (controller == OVRInput.Controller.LTouch)
         {
             OVRHaptics.LeftChannel.Preempt(clip);
@@ -49,7 +47,6 @@ public class EventList : MonoBehaviour
         {
             OVRHaptics.RightChannel.Preempt(clip);
         }
-        Debug.Log("************************* end trigger vibration ************************");
     }
 
 }
