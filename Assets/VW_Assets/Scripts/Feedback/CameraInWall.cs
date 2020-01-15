@@ -11,6 +11,16 @@ public class CameraInWall : MonoBehaviour
     [SerializeField]
     private bool isInWall = false;
 
+    private float timeInWall = 0;
+    public float TimeInWall
+    {
+        get { return timeInWall; }
+    }
+
+    private float startTimeInWall = 0;
+
+    int numberOfInWall = 0;
+
     public GameObject blackScreen;
 
     void Update()
@@ -30,8 +40,13 @@ public class CameraInWall : MonoBehaviour
     {
         if (other.gameObject.tag == "wall")
         {
-            other.gameObject.GetComponent<Renderer>().enabled = false;
-            isInWall = true;
+            numberOfInWall++;
+            if (numberOfInWall == 1)
+            {
+                startTimeInWall = Time.time;
+                other.gameObject.GetComponent<Renderer>().enabled = false;
+                isInWall = true;
+            }
         }
     }
 
@@ -39,8 +54,20 @@ public class CameraInWall : MonoBehaviour
     {
         if (other.gameObject.tag == "wall")
         {
+            numberOfInWall--;
             other.gameObject.GetComponent<Renderer>().enabled = true;
-            isInWall = false;
+            if (numberOfInWall == 0)
+            {
+                isInWall = false;
+                timeInWall += (Time.time - startTimeInWall);
+                startTimeInWall = 0;
+            }
         }
+    }
+
+
+    public void resetTimeInWall()
+    {
+        timeInWall = 0;
     }
 }

@@ -75,14 +75,15 @@ public class GuardianManager : MonoBehaviour
     {
         boundary_vertices = new List<Vector3>();
         guardian_height = max_height;
+        filters = new List<GFilter>();
 
 #if UNITY_EDITOR
-        
-            boundary_vertices.Add(new Vector3(5, 0, 5));
+
+        boundary_vertices.Add(new Vector3(5, 0, 5));
             boundary_vertices.Add(new Vector3(-5, 0, 5));
             boundary_vertices.Add(new Vector3(-5, 0, -5));
             boundary_vertices.Add(new Vector3(5, 0, -5));
-
+        createGuardian();
 #else
         boundary =  OVRManager.boundary;
 
@@ -92,11 +93,11 @@ public class GuardianManager : MonoBehaviour
             vec.y = 0;
             boundary_vertices.Add(vec);
         }
-#endif
-        createGuardian();
 
-        filters = new List<GFilter>();
+        createGuardian();
         filters.Add(new GFilterCalibrate(guardian, refreshTime,sceneOrigin));
+#endif
+
         filters.Add(new GFilterHeightByDist(guardian, max_height, min_height, max_dist, min_dist));
         filters.Add(new GFilterRGBAByDist(guardian, _colorNear, _colorFar, max_dist, min_dist));
 
@@ -117,6 +118,8 @@ public class GuardianManager : MonoBehaviour
     private void createGuardian()
     {
         guardian = Instantiate(guardian_prefab, Vector3.zero, Quaternion.identity);
+
+        //guardian.GetComponent<Renderer>().enabled = false;
 
         updateGuardian();
 

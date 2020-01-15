@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class HandInObstacle : Feedback
 {
+    public AnimationCurve curveX;
+
     ///Volume of the sound when you are in the obstacles.
     [SerializeField]
     [Range(0, 255)]

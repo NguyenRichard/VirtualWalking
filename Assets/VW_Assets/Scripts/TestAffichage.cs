@@ -15,7 +15,7 @@ public class TestAffichage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(0, 2.0f * QuestDebug.Instance.GetSliderValue() - 1.0f, 0);
-        QuestDebug.Instance.Log("Height value:" + transform.position.y);
+      //  transform.position = new Vector3(0, 2.0f * QuestDebug.Instance.GetSliderValue() - 1.0f, 0);
+       // QuestDebug.Instance.Log("Height value:" + transform.position.y);
     }
 }
