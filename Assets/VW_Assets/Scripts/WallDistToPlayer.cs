@@ -45,11 +45,11 @@ public class WallDistToPlayer : MonoBehaviour
         {
             leftHandCollider = other.gameObject.GetComponent<Collider>();
         }
-        if (other.tag == "HandR" && leftHandCollider == null)
+        if (other.tag == "HandR" && rightHandCollider == null)
         {
             rightHandCollider = other.gameObject.GetComponent<Collider>();
         }
-        if (other.tag == "Head" && leftHandCollider == null)
+        if (other.tag == "Head" && headCollider == null)
         {
             headCollider = other.gameObject.GetComponent<Collider>();
         }
