@@ -22,8 +22,7 @@ public class ButtonHandler : MonoBehaviour
     [SerializeField]
     SetupButton[] _setupButtons;
     [HideInInspector] public int setupId;
-    Texture _basicTxtr;
-    Texture _pressedTxtr;
+
 
 
     List<SetupButton> _buttonList;

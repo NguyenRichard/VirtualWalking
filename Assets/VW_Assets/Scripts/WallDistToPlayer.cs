@@ -15,6 +15,9 @@ public class WallDistToPlayer : MonoBehaviour
 
 
     private Collider colliderWall;
+    private BoxCollider thisCollider;
+
+    private float range = 0.5f;
 
     private Vector3 handLClosestPoint;
     private Vector3 handRClosestPoint;
@@ -28,6 +31,9 @@ public class WallDistToPlayer : MonoBehaviour
     private void Start()
     {
         colliderWall = transform.parent.GetComponent<Collider>();
+        Vector3 wallScale = colliderWall.bounds.size;
+        thisCollider = gameObject.GetComponent<BoxCollider>();
+        thisCollider.size = new Vector3(1 + range/wallScale.x,1+range/ wallScale.y, 1+range/ wallScale.z);   
         wallLHand = new WallData();
         wallRHand = new WallData();
         wallHead = new WallData();
