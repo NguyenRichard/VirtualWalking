@@ -17,8 +17,9 @@ public class DrawClosestWall : MonoBehaviour
             Debug.DrawRay(WallDistToPlayer.closestWallLHand.WallClosestPoint, WallDistToPlayer.closestWallLHand.Direction, Color.red);
             newIntensity = Vector3.Distance(WallDistToPlayer.closestWallLHand.WallClosestPoint, gameObject.transform.position);
             Mathf.Clamp(newIntensity, 0, 1.5f);
-            newIntensity = Mathf.Lerp(255, 0, Mathf.InverseLerp(0, 1.5f, newIntensity));
+            newIntensity = Mathf.Lerp(1, 0, Mathf.InverseLerp(0, 1.5f, newIntensity));
             Debug.Log("intensity : " + newIntensity + " int intensity : " + (int)newIntensity);
+            this.GetComponent<MeshRenderer>().material.color = new Color(0, 0, 1.0f, newIntensity);
         }
      /*   if (WallDistToPlayer.closestWallRHand != null)
         {

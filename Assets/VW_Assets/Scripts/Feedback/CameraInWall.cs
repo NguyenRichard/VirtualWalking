@@ -32,9 +32,11 @@ public class CameraInWall : MonoBehaviour
         {
             blackScreen.SetActive(true);
             AudioManager.PlaySFX("InObstaclesWarningSound");
-            
+            Color baseColor = blackScreen.GetComponent<Renderer>().material.color;
+            baseColor.a = 1;
+            blackScreen.GetComponent<Renderer>().material.color = baseColor;
         }
-        /*pour changer la transparence de l'écran noir (ne marche pas pour l'instant)
+        
         else if(WallDistToPlayer.closestWallHead != null)
         {
             blackScreen.SetActive(true);
@@ -47,7 +49,7 @@ public class CameraInWall : MonoBehaviour
             baseColor.a = newIntensity;
             blackScreen.GetComponent<Renderer>().material.color = baseColor;
             
-        }*/
+        }
         else
         {
             blackScreen.SetActive(false);
