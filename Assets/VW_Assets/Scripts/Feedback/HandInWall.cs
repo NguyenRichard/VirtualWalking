@@ -34,7 +34,7 @@ public class HandInWall : MonoBehaviour
 
     private float newIntensity = 0;
 
-    private float distMax = 0.25f;
+    private float distMax = 0.20f;
 
     public float DistMax
     {
