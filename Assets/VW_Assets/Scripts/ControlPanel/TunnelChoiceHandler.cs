@@ -24,4 +24,10 @@ public class TunnelChoiceHandler : MonoBehaviour
         _tunnels[buttonId].SetActive(true);
         _buttons[buttonId].GetComponent<Renderer>().material = _buttonActivatedMaterial;
     }
+
+    public void EnableButton(int id)
+    {
+        _buttons[id].GetComponent<BoxCollider>().enabled = true;
+        _buttons[id].GetComponent<Renderer>().material = _buttonDeactivatedMaterial;
+    }
 }
