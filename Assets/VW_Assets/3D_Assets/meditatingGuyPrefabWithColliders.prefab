@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 1820357627231540049}
   - component: {fileID: 2540609417478534589}
   m_Layer: 0
-  m_Name: meditatingGuy
+  m_Name: meditatingGuyPrefabWithColliders
   m_TagString: wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
