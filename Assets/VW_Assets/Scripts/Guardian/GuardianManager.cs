@@ -124,6 +124,7 @@ public class GuardianManager : MonoBehaviour
         updateGuardian();
 
         guardian.AddComponent<CustomGuardianData>();
+        guardian.GetComponent<Renderer>().enabled = false;
 
     }
 
