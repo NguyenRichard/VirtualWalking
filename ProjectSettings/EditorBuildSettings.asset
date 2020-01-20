@@ -5,7 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/VW_Assets/Scenes/Scenario1.unity
     guid: 1b0813abc57db0249978afa8ea831834
+  - enabled: 1
+    path: Assets/VW_Assets/Scenes/Scenario2.unity
+    guid: ac690e27ad5ad4c469d0939ced6afb52
   m_configObjects: {}
