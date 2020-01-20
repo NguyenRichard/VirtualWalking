@@ -18,6 +18,6 @@ public class VaryingLightIntensity : MonoBehaviour
 
     void Update()
     {
-        varyingLight.intensity = 8.0f * speedIndicatorScript.speedIndicator;
+        varyingLight.intensity = 1.0f * speedIndicatorScript.speedIndicator;
     }
 }

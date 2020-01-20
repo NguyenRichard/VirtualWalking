@@ -50,9 +50,9 @@ MonoBehaviour:
     source: {fileID: 0}
     isLooping: 0
     playOnAwake: 0
-  - audioName: 
-    audioClip: {fileID: 0}
-    volume: 0
+  - audioName: InObstaclesWarningSound
+    audioClip: {fileID: 8300000, guid: 98d6a209fcc45e841a79c03cefeb6401, type: 3}
+    volume: 0.79
     source: {fileID: 0}
     isLooping: 0
     playOnAwake: 0
