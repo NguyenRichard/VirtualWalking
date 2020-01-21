@@ -26,6 +26,8 @@ public class QuestDebug : MonoBehaviour
     private GameObject collisionDetector;
     private GameObject rHand;
     private GameObject lHand;
+    private GameObject menu;
+
 
     private string path_woFeedback_collisions;
     private string path_woFeedback_coordinates;
@@ -90,6 +92,7 @@ Environment.NewLine);
 
 
         time = Time.time;
+        menu = GameObject.Find("CanvasWithDebug");
 
         // var sliderPrefab = DebugUIBuilder.instance.AddSlider("Slider", 50f, 100.0f, SliderPressed, true);
         //var textElementsInSlider = sliderPrefab.GetComponentsInChildren<Text>();
@@ -139,7 +142,7 @@ Environment.NewLine);
     {
         if (OVRInput.GetDown(OVRInput.Button.Two) || OVRInput.GetDown(OVRInput.Button.Start))
         {
-            if (inMenu)
+          /*  if (inMenu)
             {
                 inMenu = false;
                 DebugUIBuilder.instance.Hide();
@@ -150,17 +153,18 @@ Environment.NewLine);
                 DebugUIBuilder.instance.Show();
             }
             // inMenu = !inMenu;
-
+            */
             //DebugUIBuilder.instance.Show();
-            /*if (inMenu)
+
+            if (inMenu)
             {
-                UICanvas.enabled = false;
+                menu.SetActive(false);
             }
             else
             {
-                UICanvas.enabled = true;
+                menu.SetActive(true);
             }
-            inMenu = !inMenu;*/
+            inMenu = !inMenu;
 
         }
 
@@ -169,9 +173,7 @@ Environment.NewLine);
             DateTime now = DateTime.Now;
             if (headInObstacles.IsActive == false)
             {
-                File.AppendAllText(path_woFeedback_coordinates, now.Day.ToString("00") + "_" + now.Month.ToString("00") + "_" + now.Year + "_" +
-                now.Hour.ToString("00") + "_" + now.Minute.ToString("00") + "_" + now.Second.ToString("00")
-                + ";" + collisionDetector.transform.position.x
+                File.AppendAllText(path_woFeedback_coordinates, collisionDetector.transform.position.x
                 + ";" + collisionDetector.transform.position.y
                 + ";" + collisionDetector.transform.position.z
                 + ";" + rHand.transform.position.x
@@ -184,9 +186,7 @@ Environment.NewLine);
             }
             else
             {
-                File.AppendAllText(path_wFeedback_coordinates, now.Day.ToString("00") + "_" + now.Month.ToString("00") + "_" + now.Year + "_" +
-                now.Hour.ToString("00") + "_" + now.Minute.ToString("00") + "_" + now.Second.ToString("00")
-                + ";" + collisionDetector.transform.position.x
+                File.AppendAllText(path_wFeedback_coordinates, collisionDetector.transform.position.x
                 + ";" + collisionDetector.transform.position.y
                 + ";" + collisionDetector.transform.position.z
                 + ";" + rHand.transform.position.x

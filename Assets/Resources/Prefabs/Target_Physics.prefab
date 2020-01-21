@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6330332882602496145}
   - component: {fileID: 6330332882602496147}
   - component: {fileID: 6330332882602496146}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Target_Rendering
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,8 +92,8 @@ GameObject:
   - component: {fileID: 6330332882773845514}
   - component: {fileID: 6330332882773845516}
   - component: {fileID: 6330332882773845517}
-  m_Layer: 0
-  m_Name: Target_Physics 1
+  m_Layer: 8
+  m_Name: Target_Physics
   m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,7 +108,7 @@ Transform:
   m_GameObject: {fileID: 6330332882773845527}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0.25, z: 3.5}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children:
   - {fileID: 6330332882602496145}
   - {fileID: 6330332884274521358}
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 6330332884274521358}
   - component: {fileID: 6330332884274521344}
   - component: {fileID: 6330332884274521359}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Target_FX
   m_TagString: Untagged
   m_Icon: {fileID: 0}
