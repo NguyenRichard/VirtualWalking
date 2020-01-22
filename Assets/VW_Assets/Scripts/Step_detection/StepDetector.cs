@@ -40,6 +40,7 @@ public class StepDetector : MonoBehaviour {
 
     public float LastMaxY { get; private set; }
     public float VerticalThreshold = 0; //defaut : 0.003
+    public float offsetY = 0f;
 
     public LastLogSteps lls;
 
@@ -53,8 +54,8 @@ public class StepDetector : MonoBehaviour {
 
         PosSinceLastStep = timeThreshold;
 
-        leftfootstepPrefab = Resources.Load<GameObject>("Prefabs/LeftSphere");
-        rightfootstepPrefab = Resources.Load<GameObject>("Prefabs/RightSphere");
+        leftfootstepPrefab = Resources.Load<GameObject>("Prefabs/LeftFootstep");
+        rightfootstepPrefab = Resources.Load<GameObject>("Prefabs/RightFootstep");
 
         print("aouak");
     }
@@ -125,14 +126,14 @@ public class StepDetector : MonoBehaviour {
                         GameObject footstep;
                         if (currentStep.side == Step.Side.Left)
                         {
-                            footstep = Instantiate(leftfootstepPrefab, new Vector3(dm.FiltPositions[pos - 1].x, 0.21f, dm.FiltPositions[pos - 1].z), Quaternion.identity);
-                        }
+                            footstep = Instantiate(leftfootstepPrefab, new Vector3(dm.FiltPositions[pos - 1].x, offsetY, dm.FiltPositions[pos - 1].z), Quaternion.identity);
+                        }   
                         else
                         {
-                            footstep = Instantiate(rightfootstepPrefab, new Vector3(dm.FiltPositions[pos - 1].x, 0.21f, dm.FiltPositions[pos - 1].z), Quaternion.identity);
+                            footstep = Instantiate(rightfootstepPrefab, new Vector3(dm.FiltPositions[pos - 1].x, offsetY, dm.FiltPositions[pos - 1].z), Quaternion.identity);
                         }
-                        footstep.transform.rotation = new Quaternion(footstep.transform.rotation.x, headGameObject.transform.rotation.y, footstep.transform.rotation.z, footstep.transform.rotation.w);
-                        footstep.transform.Rotate(90, 0, 0);
+                       // footstep.transform.rotation = new Quaternion(footstep.transform.rotation.x, headGameObject.transform.rotation.y, footstep.transform.rotation.z, footstep.transform.rotation.w);
+                        footstep.transform.Rotate(0, headGameObject.transform.eulerAngles.y, 0);
 
                         /*if(footstepList.Count > stepNumber)
                         {

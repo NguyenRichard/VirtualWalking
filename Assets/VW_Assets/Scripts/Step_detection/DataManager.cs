@@ -101,7 +101,7 @@ public class DataManager : MonoBehaviour {
         {
             sd.Go();
         }
-        ls.Write();
+       // ls.Write();
     }
 
     /*private void OnEnable()
