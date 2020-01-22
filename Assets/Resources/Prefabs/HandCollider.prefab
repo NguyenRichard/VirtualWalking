@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 856755097845056147}
   - component: {fileID: 856755097845056144}
   - component: {fileID: 856755097845056145}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HandCollider
   m_TagString: Untagged
   m_Icon: {fileID: 0}

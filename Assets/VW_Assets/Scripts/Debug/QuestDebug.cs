@@ -135,7 +135,7 @@ Environment.NewLine);
     //Copied from DebugUISample.cs script
     void Update()
     {
-        if (OVRInput.GetDown(OVRInput.Button.Two) || OVRInput.GetDown(OVRInput.Button.Start))
+        if (OVRInput.GetDown(OVRInput.Button.Start))
         {
             if (inMenu)
             {

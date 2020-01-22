@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7103082588835928220}
   m_Layer: 0
   m_Name: RightControllerAnchor
-  m_TagString: Untagged
+  m_TagString: HandR
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -669,7 +669,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7103082588926851858}
   - component: {fileID: 7103082588529889183}
-  - component: {fileID: 7103082588529889180}
   m_Layer: 0
   m_Name: RightHandAnchor
   m_TagString: Untagged
@@ -708,26 +707,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7103082588529889180
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7103082588926533988}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd425c2d06f39bf4899d07c05d0f10eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grabBegin: 0.55
-  grabEnd: 0.35
-  m_parentHeldObject: 1
-  m_gripTransform: {fileID: 0}
-  m_grabVolumes:
-  - {fileID: 0}
-  m_controller: 2
-  m_parentTransform: {fileID: 0}
 --- !u!1 &7103082588926572700
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,7 +717,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7103082588926847868}
   - component: {fileID: 7103082589843725535}
-  - component: {fileID: 7103082589843725532}
   m_Layer: 0
   m_Name: LeftHandAnchor
   m_TagString: Untagged
@@ -777,26 +755,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7103082589843725532
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7103082588926572700}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd425c2d06f39bf4899d07c05d0f10eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  grabBegin: 0.55
-  grabEnd: 0.35
-  m_parentHeldObject: 1
-  m_gripTransform: {fileID: 0}
-  m_grabVolumes:
-  - {fileID: 0}
-  m_controller: 1
-  m_parentTransform: {fileID: 0}
 --- !u!1 &7104096035077360224
 GameObject:
   m_ObjectHideFlags: 0
@@ -809,7 +767,7 @@ GameObject:
   - component: {fileID: 7103082589919817458}
   m_Layer: 0
   m_Name: LeftControllerAnchor
-  m_TagString: Untagged
+  m_TagString: HandL
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1132,6 +1090,16 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 136856197872638792, guid: bbd8ff8aaf3bc6e46a355534c8982de2,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.026
+      objectReference: {fileID: 0}
+    - target: {fileID: 136353236856401586, guid: bbd8ff8aaf3bc6e46a355534c8982de2,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.035
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbd8ff8aaf3bc6e46a355534c8982de2, type: 3}
 --- !u!1001 &7103082590496864895
@@ -1204,6 +1172,16 @@ PrefabInstance:
     - target: {fileID: 1811557949420620, guid: 8b9e373e058ad484b802f5f3c774eebd, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 136640579844088410, guid: 8b9e373e058ad484b802f5f3c774eebd,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.035
+      objectReference: {fileID: 0}
+    - target: {fileID: 136653489530821594, guid: 8b9e373e058ad484b802f5f3c774eebd,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.026
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b9e373e058ad484b802f5f3c774eebd, type: 3}
