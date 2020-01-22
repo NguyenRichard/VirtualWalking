@@ -72,9 +72,12 @@ public class QuestDebug : MonoBehaviour
 
         time = Time.time;
         menu = GameObject.Find("CanvasWithDebug");
-
-        path_woFeedback_collisions = Path.Combine(Application.persistentDataPath, "Log" + "_" + "CoordinatewoFeedback.txt");
-        path_wFeedback_collisions = Path.Combine(Application.persistentDataPath, "Log" + "_" + "CoordinatewFeedback.txt");
+        if (!Application.isEditor)
+        {
+            path_woFeedback_collisions = Path.Combine(Application.persistentDataPath, "Log" + "_" + "CoordinatewoFeedback.txt");
+            path_wFeedback_collisions = Path.Combine(Application.persistentDataPath, "Log" + "_" + "CoordinatewFeedback.txt");
+        }
+        
 
         //var sliderPrefab = DebugUIBuilder.instance.AddSlider("Slider", 50f, 100.0f, SliderPressed, true);
         //var textElementsInSlider = sliderPrefab.GetComponentsInChildren<Text>();
@@ -163,36 +166,39 @@ Environment.NewLine);
 
         }
 
-        if(Time.time >= time)
+        if (!Application.isEditor)
         {
-            DateTime now = DateTime.Now;
-            if (headInObstacles.IsActive == false)
+            if (Time.time >= time)
             {
-                File.AppendAllText(path_woFeedback_coordinates, collisionDetector.transform.position.x
-                + ";" + collisionDetector.transform.position.y
-                + ";" + collisionDetector.transform.position.z
-                + ";" + rHand.transform.position.x
-                + ";" + rHand.transform.position.y
-                + ";" + rHand.transform.position.z
-                + ";" + lHand.transform.position.x
-                + ";" + lHand.transform.position.y
-                + ";" + lHand.transform.position.z
-                + Environment.NewLine);
+                DateTime now = DateTime.Now;
+                if (headInObstacles.IsActive == false)
+                {
+                    File.AppendAllText(path_woFeedback_coordinates, collisionDetector.transform.position.x
+                    + ";" + collisionDetector.transform.position.y
+                    + ";" + collisionDetector.transform.position.z
+                    + ";" + rHand.transform.position.x
+                    + ";" + rHand.transform.position.y
+                    + ";" + rHand.transform.position.z
+                    + ";" + lHand.transform.position.x
+                    + ";" + lHand.transform.position.y
+                    + ";" + lHand.transform.position.z
+                    + Environment.NewLine);
+                }
+                else
+                {
+                    File.AppendAllText(path_wFeedback_coordinates, collisionDetector.transform.position.x
+                    + ";" + collisionDetector.transform.position.y
+                    + ";" + collisionDetector.transform.position.z
+                    + ";" + rHand.transform.position.x
+                    + ";" + rHand.transform.position.y
+                    + ";" + rHand.transform.position.z
+                    + ";" + lHand.transform.position.x
+                    + ";" + lHand.transform.position.y
+                    + ";" + lHand.transform.position.z
+                    + Environment.NewLine);
+                }
+                time = Time.time + refresh_coordinate_time;
             }
-            else
-            {
-                File.AppendAllText(path_wFeedback_coordinates, collisionDetector.transform.position.x
-                + ";" + collisionDetector.transform.position.y
-                + ";" + collisionDetector.transform.position.z
-                + ";" + rHand.transform.position.x
-                + ";" + rHand.transform.position.y
-                + ";" + rHand.transform.position.z
-                + ";" + lHand.transform.position.x
-                + ";" + lHand.transform.position.y
-                + ";" + lHand.transform.position.z
-                + Environment.NewLine);
-            }
-            time = Time.time + refresh_coordinate_time;
         }
       
 

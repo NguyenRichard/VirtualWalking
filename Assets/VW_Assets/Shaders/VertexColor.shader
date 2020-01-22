@@ -23,6 +23,7 @@ Shader "Custom/VertexColor"
 
 		void surf(Input IN, inout SurfaceOutput o)
 		{
+			//o.Albedo = IN.vertColor.rgb;
 			o.Albedo = IN.vertColor.rgb;
 		}
 		ENDCG

@@ -10,20 +10,39 @@ public class SpeedIndicator : MonoBehaviour
 
     [SerializeField] float minimalSpeed = (4.0f / 3.6f);
     [SerializeField] float maximalSpeed = (8.0f / 3.6f); // 4 kilomètres par heures exprimé en mètres par seconde
-    public float speedIndicator = 0.0f; // Varie entre 0 et 1
-    Vector3 OldPosition;
-    float Distance;
+    [SerializeField] float lerpEffect = 1.0f; // Plus cette valeur est haute, plus l'effet de lissage est rapide
+    float realSpeedIndicator = 0.0f; // Varie entre 0 et 1
+    public float speedIndicator = 0.0f; // Varie entre 0.1 et 1
+    Vector3 _oldPosition;
+    float _distance;
 
     void Start()
     {
-        OldPosition = this.transform.position;
+        _oldPosition = this.transform.position;
     }
 
+    // V2, l'autre me semble pas ouf
     void Update()
     {
-        Distance = Vector3.Distance(OldPosition, this.transform.position);
-        speedIndicator = (speedIndicator + (Mathf.Clamp(Distance/Time.deltaTime, minimalSpeed, maximalSpeed) / (maximalSpeed - minimalSpeed)))/2.0f;
-        OldPosition = this.transform.position;
-        speedIndicator = (float)((int)(speedIndicator * 10))/10.0f;
+        //_distance = Vector3.Distance(_oldPosition, this.transform.position);
+        //realSpeedIndicator = (realSpeedIndicator + (Mathf.Clamp(_distance/Time.deltaTime, minimalSpeed, maximalSpeed) / (maximalSpeed - minimalSpeed)))/2.0f;
+        //_oldPosition = this.transform.position;
+        //realSpeedIndicator = (float)((int)(realSpeedIndicator * 10))/10.0f;
+
+        _distance = Vector3.Distance(_oldPosition, transform.position);
+        
+        realSpeedIndicator = Mathf.Lerp(realSpeedIndicator, _distance/((maximalSpeed - minimalSpeed) * Time.deltaTime), lerpEffect * Time.deltaTime);
+
+        if(realSpeedIndicator < 0.1)
+        {
+            speedIndicator = 0;
+        }
+        else
+        {
+            speedIndicator = realSpeedIndicator;
+        }
+
+        Mathf.Clamp(realSpeedIndicator, 1, 0);
+        _oldPosition = transform.position;
     }
 }

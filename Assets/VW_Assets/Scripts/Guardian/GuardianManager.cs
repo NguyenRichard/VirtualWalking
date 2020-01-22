@@ -18,6 +18,8 @@ public class GuardianManager : MonoBehaviour
         set { this.guardian_height = value; }
     }
 
+    [SerializeField] bool _isRendered = false;
+
     [SerializeField]
     private float max_height = 5;
     public float Max_height
@@ -68,6 +70,7 @@ public class GuardianManager : MonoBehaviour
     private Mesh mesh;
 
     List<GFilter> filters;
+
     private List<Vector3> boundary_vertices;
 
     // Start is called before the first frame update
@@ -124,7 +127,7 @@ public class GuardianManager : MonoBehaviour
         updateGuardian();
 
         guardian.AddComponent<CustomGuardianData>();
-        guardian.GetComponent<Renderer>().enabled = false;
+        guardian.GetComponent<Renderer>().enabled = _isRendered;
 
     }
 
