@@ -53,7 +53,8 @@ public class QuestDebug : MonoBehaviour
 
         DebugUIBuilder.instance.AddToggle("Feedback On/Off",switchFeedback);
         DebugUIBuilder.instance.AddDivider();
-        DebugUIBuilder.instance.AddButton("Reset timer", resetTimer);
+        DebugUIBuilder.instance.AddButton("Stop", resetTimer);
+        DebugUIBuilder.instance.AddButton("Start", startRecording);
 
         feedbackManager = GameObject.Find("FeedbackManager");
         headInObstacles = feedbackManager.GetComponent<HeadInObstacles>();
@@ -68,38 +69,41 @@ public class QuestDebug : MonoBehaviour
         rHand = GameObject.Find("RightHandAnchor");
         lHand = GameObject.Find("LeftHandAnchor");
 
-        //Log
-        DateTime now = DateTime.Now;
-        path_woFeedback_collisions = Path.Combine(Application.persistentDataPath, "Log" + "_" + now.Day.ToString("00") + "_" + now.Month.ToString("00") + "_" + now.Year + "_" +
-            now.Hour.ToString("00") + "_" + now.Minute.ToString("00") + "_" + now.Second.ToString("00") + "_" + "TimeInWallwoFeedback.txt");
-        path_wFeedback_collisions = Path.Combine(Application.persistentDataPath, "Log" + "_" + now.Day.ToString("00") + "_" + now.Month.ToString("00") + "_" + now.Year + "_" +
-    now.Hour.ToString("00") + "_" + now.Minute.ToString("00") + "_" + now.Second.ToString("00") + "_" + "TimeInWallwFeedback.txt");
-
-        path_woFeedback_coordinates = Path.Combine(Application.persistentDataPath, "Log" + "_" + now.Day.ToString("00") + "_" + now.Month.ToString("00") + "_" + now.Year + "_" +
-    now.Hour.ToString("00") + "_" + now.Minute.ToString("00") + "_" + now.Second.ToString("00") + "_" + "CoordinatewoFeedback.txt");
-
-        path_wFeedback_coordinates = Path.Combine(Application.persistentDataPath, "Log" + "_" + now.Day.ToString("00") + "_" + now.Month.ToString("00") + "_" + now.Year + "_" +
-now.Hour.ToString("00") + "_" + now.Minute.ToString("00") + "_" + now.Second.ToString("00") + "_" + "CoordinatewFeedback.txt");
-
-        File.WriteAllText(path_woFeedback_collisions, "Date;Time in Wall (s);Number of collisions" +
-    Environment.NewLine);
-        File.WriteAllText(path_wFeedback_collisions, "Date;Time in Wall (s);Number of collisions" +
-Environment.NewLine);
-        File.WriteAllText(path_woFeedback_coordinates, "x_head;y_head;z_head;x_handR;y_handR;z_handR;x_handL;y_handL;z_handL" +
-Environment.NewLine);
-        File.WriteAllText(path_wFeedback_coordinates, "x_head;y_head;z_head;x_handR;y_handR;z_handR;x_handL;y_handL;z_handL" +
-Environment.NewLine);
-
 
         time = Time.time;
         menu = GameObject.Find("CanvasWithDebug");
 
-        // var sliderPrefab = DebugUIBuilder.instance.AddSlider("Slider", 50f, 100.0f, SliderPressed, true);
+        path_woFeedback_collisions = Path.Combine(Application.persistentDataPath, "Log" + "_" + "CoordinatewoFeedback.txt");
+        path_wFeedback_collisions = Path.Combine(Application.persistentDataPath, "Log" + "_" + "CoordinatewFeedback.txt");
+
+        //var sliderPrefab = DebugUIBuilder.instance.AddSlider("Slider", 50f, 100.0f, SliderPressed, true);
         //var textElementsInSlider = sliderPrefab.GetComponentsInChildren<Text>();
         //Assert.AreEqual(textElementsInSlider.Length, 2, "Slider prefab format requires 2 text components (label + value)");
         //sliderText = textElementsInSlider[1];
         //Assert.IsNotNull(sliderText, "No text component on slider prefab");
         //sliderText.text = sliderPrefab.GetComponentInChildren<Slider>().value.ToString();
+    }
+
+    private void startRecording()
+    {
+        calculateCollisions.reset();
+        DateTime now = DateTime.Now;
+        if (headInObstacles.IsActive == false)
+        {
+            path_woFeedback_coordinates = Path.Combine(Application.persistentDataPath, "Log" + "_" + now.Day.ToString("00") + "_" + now.Month.ToString("00") + "_" + now.Year + "_" +
+now.Hour.ToString("00") + "_" + now.Minute.ToString("00") + "_" + now.Second.ToString("00") + "_" + "CoordinatewoFeedback.txt");
+            File.WriteAllText(path_woFeedback_coordinates, "x_head;y_head;z_head;x_handR;y_handR;z_handR;x_handL;y_handL;z_handL" +
+Environment.NewLine);
+        }
+        else
+        {
+            path_wFeedback_coordinates = Path.Combine(Application.persistentDataPath, "Log" + "_" + now.Day.ToString("00") + "_" + now.Month.ToString("00") + "_" + now.Year + "_" +
+now.Hour.ToString("00") + "_" + now.Minute.ToString("00") + "_" + now.Second.ToString("00") + "_" + "CoordinatewFeedback.txt");
+            File.WriteAllText(path_wFeedback_coordinates, "x_head;y_head;z_head;x_handR;y_handR;z_handR;x_handL;y_handL;z_handL" +
+Environment.NewLine);
+        }
+
+
     }
 
     private void resetTimer()
@@ -111,10 +115,6 @@ Environment.NewLine);
              now.Hour.ToString("00") + "_" + now.Minute.ToString("00") + "_" + now.Second.ToString("00") + ";" + calculateCollisions.TimeInWall
              + ";" + calculateCollisions.NumberOfCollision
              + Environment.NewLine);
-            path_woFeedback_coordinates = Path.Combine(Application.persistentDataPath, "Log" + "_" + now.Day.ToString("00") + "_" + now.Month.ToString("00") + "_" + now.Year + "_" +
-now.Hour.ToString("00") + "_" + now.Minute.ToString("00") + "_" + now.Second.ToString("00") + "_" + "CoordinatewoFeedback.txt");
-            File.WriteAllText(path_woFeedback_coordinates, "x_head;y_head;z_head;x_handR;y_handR;z_handR;x_handL;y_handL;z_handL" +
-Environment.NewLine);
         }
         else
         {
@@ -122,13 +122,8 @@ Environment.NewLine);
              now.Hour.ToString("00") + "_" + now.Minute.ToString("00") + "_" + now.Second.ToString("00") + ";" + calculateCollisions.TimeInWall
              + ";" + calculateCollisions.NumberOfCollision
              + Environment.NewLine);
-            path_wFeedback_coordinates = Path.Combine(Application.persistentDataPath, "Log" + "_" + now.Day.ToString("00") + "_" + now.Month.ToString("00") + "_" + now.Year + "_" +
-now.Hour.ToString("00") + "_" + now.Minute.ToString("00") + "_" + now.Second.ToString("00") + "_" + "CoordinatewoFeedback.txt");
-            File.WriteAllText(path_wFeedback_coordinates, "x_head;y_head;z_head;x_handR;y_handR;z_handR;x_handL;y_handL;z_handL" +
-Environment.NewLine);
         }
 
-        calculateCollisions.reset();
     }
 
     private void switchFeedback(Toggle t)
@@ -142,7 +137,7 @@ Environment.NewLine);
     {
         if (OVRInput.GetDown(OVRInput.Button.Two) || OVRInput.GetDown(OVRInput.Button.Start))
         {
-          /*  if (inMenu)
+            if (inMenu)
             {
                 inMenu = false;
                 DebugUIBuilder.instance.Hide();
@@ -153,9 +148,9 @@ Environment.NewLine);
                 DebugUIBuilder.instance.Show();
             }
             // inMenu = !inMenu;
-            */
+            
             //DebugUIBuilder.instance.Show();
-
+            /*
             if (inMenu)
             {
                 menu.SetActive(false);
@@ -164,7 +159,7 @@ Environment.NewLine);
             {
                 menu.SetActive(true);
             }
-            inMenu = !inMenu;
+            inMenu = !inMenu;*/
 
         }
 
