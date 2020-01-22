@@ -1,4 +1,6 @@
-﻿Shader "Custom/TransparentVertexColor"
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+Shader "Custom/TransparentVertexColor"
 {
 
 	Properties {
@@ -29,7 +31,7 @@
 
 				void vert(inout appdata_full v) {
 					// Convert to world position
-					float4 worldPos = mul(_Object2World, v.vertex);
+					float4 worldPos = mul(unity_ObjectToWorld, v.vertex);
 					float diff = worldPos.y - _CenterHeight;
 					float cFactor = saturate(diff / (2 * _MaxVariance) + 0.5);
 
