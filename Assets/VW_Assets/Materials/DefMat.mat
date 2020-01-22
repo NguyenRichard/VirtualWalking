@@ -57,12 +57,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - _BumpScale: 1
+    - _CenterHeight: 0
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _MaxVariance: 3
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -78,4 +80,6 @@ Material:
     - _EmisColor: {r: 0.2, g: 0.2, b: 0.2, a: 0}
     - _Emission: {r: 0, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _HighColor: {r: 0, g: 1, b: 0.97219443, a: 0.2509804}
+    - _LowColor: {r: 0, g: 0.1687684, b: 1, a: 1}
     - _SpecColor: {r: 1, g: 1, b: 1, a: 0}

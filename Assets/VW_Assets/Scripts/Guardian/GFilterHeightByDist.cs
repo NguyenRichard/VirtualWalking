@@ -44,8 +44,8 @@ public class GFilterHeightByDist : GFilterByDistance
 
         for (int i = 0; i < vertices.Length/2; i++)
         {
-            vertices[i+vertices.Length / 2].y = heightFromDist(_guardianData.Distances[i]);
-
+            //vertices[i+vertices.Length / 2].y = heightFromDist(_guardianData.Distances[i]);
+            vertices[i + vertices.Length / 2].y = heightFromDist(_guardianData.ClosestVertexDistance);
         }
     }
 
