@@ -389,6 +389,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimalSpeed: 1.1111112
   maximalSpeed: 2.2222223
+  lerpEffect: 1
   speedIndicator: 0
 --- !u!1 &842622509
 GameObject:
@@ -691,6 +692,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimalSpeed: 1.1111112
   maximalSpeed: 2.2222223
+  lerpEffect: 1
   speedIndicator: 0
 --- !u!1001 &1683234282
 PrefabInstance:
@@ -925,10 +927,10 @@ MonoBehaviour:
   guardian_prefab: {fileID: 6981155179156918780, guid: 40aab9c6c2c804a489bf9a451aff3d00,
     type: 3}
   _isRendered: 1
-  max_height: 3
-  min_height: 0.5
-  max_dist: 2
-  min_dist: 0.5
+  max_height: 2.5
+  min_height: 0.25
+  max_dist: 1.5
+  min_dist: 0.3
   _colorNear: {r: 0, g: 0.12434244, b: 1, a: 1}
   _colorFar: {r: 0.007843137, g: 1, b: 0.98066664, a: 0.22352941}
   refreshTime: 10
