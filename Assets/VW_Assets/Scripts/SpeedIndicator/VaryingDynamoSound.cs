@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-[RequireComponent(typeof(SpeedIndicator))]
 public class VaryingDynamoSound : MonoBehaviour
 {
     SpeedIndicator _speedIndicatorScript;
@@ -13,7 +11,10 @@ public class VaryingDynamoSound : MonoBehaviour
 
     void Start()
     {
-        _speedIndicatorScript = gameObject.GetComponent<SpeedIndicator>();
+        GameObject playerController = GameObject.Find("OVRPlayerController");
+        Debug.Assert(playerController, "You must add gameManager because its eventList is needed.");
+        _speedIndicatorScript = playerController.GetComponent<SpeedIndicator>();
+        Debug.Assert(_speedIndicatorScript, "Could'nt get the EventList from the GameManager");
         _audioSource = gameObject.AddComponent<AudioSource>();
         _audioSource.clip = _dynamoAudioClip;
         _audioSource.loop = true;

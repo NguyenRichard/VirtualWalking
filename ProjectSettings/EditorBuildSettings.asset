@@ -11,10 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/VW_Assets/Scenes/Scenario2.unity
     guid: ac690e27ad5ad4c469d0939ced6afb52
-  - enabled: 0
+  - enabled: 1
     path: Assets/VW_Assets/Scenes/Scenario2_louis.unity
     guid: d3fd1903ddda497478f8f9b334221c1c
-  - enabled: 1
+  - enabled: 0
     path: Assets/VW_Assets/Scenes/TestRichardScenario1.unity
     guid: 64a5e6eb6d8b282499c39c993d46d722
   m_configObjects: {}
