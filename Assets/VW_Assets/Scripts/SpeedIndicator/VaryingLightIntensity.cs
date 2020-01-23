@@ -12,7 +12,10 @@ public class VaryingLightIntensity : MonoBehaviour
     void Start() 
     {
         varyingLight = GetComponent<Light>();
-        speedIndicatorScript = gameObject.GetComponent<SpeedIndicator>();
+        GameObject playerController = GameObject.Find("OVRPlayerController");
+        Debug.Assert(playerController, "You must add gameManager because its eventList is needed.");
+        speedIndicatorScript = playerController.GetComponent<SpeedIndicator>();
+        Debug.Assert(speedIndicatorScript, "Could'nt get the EventList from the GameManager");
     }
 
     void Update()

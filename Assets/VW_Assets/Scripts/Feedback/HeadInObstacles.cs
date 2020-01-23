@@ -22,7 +22,11 @@ public class HeadInObstacles  : Feedback
 
     public void UpdateDist()
     {
-        throw new NotImplementedException();
+        if (dist < 0)
+        {
+            dist = 0f;
+        }
+        cameraInWall.DistMax = Dist;
     }
 
     ///Volume of the sound when you are in the obstacles.
@@ -56,6 +60,7 @@ public class HeadInObstacles  : Feedback
 
     }
 
+    private CameraInWall cameraInWall;
     private AudioFile sound;
 
     protected override void InitScene()
@@ -68,6 +73,8 @@ public class HeadInObstacles  : Feedback
         GameObject headCollider = Instantiate(prefabHeadCollider, Vector3.zero, Quaternion.identity);
         Debug.Assert(headCollider, "Couldn't instantiate headCollider");
         headCollider.tag = "Head";
+        cameraInWall = headCollider.GetComponent<CameraInWall>();
+        
 
         GameObject centerEyeAnchor = GameObject.Find("OVRPlayerController/OVRCameraRig/TrackingSpace/CenterEyeAnchor");
         Debug.Assert(centerEyeAnchor, "You must add OVRPlayerController because its child CenterEyeAnchor is needed.");
@@ -82,7 +89,7 @@ public class HeadInObstacles  : Feedback
 
     protected override void UpdateParameters()
     {
-        // UpdateDist();
+        UpdateDist();
         UpdateVolume();
         SwitchActiveState();
     }
