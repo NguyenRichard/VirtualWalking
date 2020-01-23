@@ -6,30 +6,14 @@ public class GFilterCalibrate : GFilter
 {
 
     private OVRBoundary boundary;
-    private Transform _sceneOrigin;
     private float _refreshTime;
     private float nextUpdate;
 
-    public GFilterCalibrate(GameObject guardian, float refreshTime, Transform sceneOrigin) : base(guardian)
+    public GFilterCalibrate(GameObject guardian, float refreshTime) : base(guardian)
     {
         _refreshTime = refreshTime;
         nextUpdate = Time.time + _refreshTime;
-        _sceneOrigin = sceneOrigin;
 
-    }
-
-    private Vector3 calculateOrigin()
-    {
-        Vector3 origin = Vector3.zero;
-
-        foreach(var position in boundary.GetGeometry(OVRBoundary.BoundaryType.PlayArea))
-        {
-            origin += position;
-        }
-
-        origin /= 4;
-
-        return origin;
     }
 
     public override void Apply()
@@ -47,8 +31,6 @@ public class GFilterCalibrate : GFilter
                 _guardianData.Vertices[i+boundary.GetGeometry(OVRBoundary.BoundaryType.OuterBoundary).Length] = vec;
 
             }
-
-            _sceneOrigin.position = calculateOrigin();
 
             nextUpdate = Time.time + _refreshTime;
            

@@ -10,6 +10,7 @@ public class ButtonTriggerAlt : MonoBehaviour
     {
         if (other.CompareTag("HandR") || other.CompareTag("HandL"))
         {
+            Debug.Log("Collision");
             transform.parent.GetComponent<TunnelChoiceHandler>().ChangeTunnel(id);
             ChangeButtonState();
         }
