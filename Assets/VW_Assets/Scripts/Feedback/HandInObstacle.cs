@@ -38,6 +38,33 @@ public class HandInObstacle : Feedback
 
     }
 
+    [SerializeField]
+    private float dist = 0;
+    public float Dist
+    {
+        get { return dist; }
+
+        set
+        {
+            dist = value;
+            UpdateDist();
+        }
+
+    }
+
+    public void UpdateDist()
+    {
+        if (dist < 0)
+        {
+            dist = 0f;
+        }
+        leftHandInWall.DistMax = dist;
+        rightHandInWall.DistMax = dist;
+    }
+
+    private HandInWall rightHandInWall;
+    private HandInWall leftHandInWall;
+
     protected override void InitScene()
     {
         var prefabHandCollider = Resources.Load<GameObject>("Prefabs/HandCollider");
@@ -55,6 +82,7 @@ public class HandInObstacle : Feedback
         HandInWall handInWallRight = handColliderRight.GetComponent<HandInWall>();
         Debug.Assert(handInWallRight, "Could'nt get the HandInWall from the HandColliderRight");
         handInWallRight.Left = false;
+        rightHandInWall = handInWallRight;
 
         GameObject leftHandAnchor = GameObject.Find("OVRPlayerController/OVRCameraRig/TrackingSpace/LeftHandAnchor");
         Debug.Assert(leftHandAnchor, "You must add OVRPlayerController because its child LeftHandAnchor is needed.");
@@ -62,6 +90,7 @@ public class HandInObstacle : Feedback
         HandInWall handInWallLeft = handColliderLeft.GetComponent<HandInWall>();
         Debug.Assert(handInWallLeft, "Could'nt get the HandInWall from the HandColliderLeft");
         handInWallLeft.Left = true;
+        leftHandInWall = handInWallLeft;
 
         components.Add(handColliderLeft);
         components.Add(handColliderRight);
@@ -73,6 +102,7 @@ public class HandInObstacle : Feedback
 
     protected override void UpdateParameters()
     {
+        UpdateDist();
         UpdateIntensity();
     }
 }
