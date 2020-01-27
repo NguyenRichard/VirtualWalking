@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.54281515, g: 0.5058709, b: 0.5237474, a: 1}
+  m_IndirectSpecularColor: {r: 0.5428217, g: 0.50587404, b: 0.5237529, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -702,7 +702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  dist: 0
+  dist: 0.1
   volume: 0.5
 --- !u!4 &220073561
 Transform:
@@ -738,6 +738,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   intensity: 130
+  dist: 0.1
 --- !u!1 &259511170
 GameObject:
   m_ObjectHideFlags: 0
@@ -3249,6 +3250,7 @@ MonoBehaviour:
     type: 3}
   guardian_prefab: {fileID: 6981155179156918780, guid: 40aab9c6c2c804a489bf9a451aff3d00,
     type: 3}
+  _isRendered: 0
   max_height: 5
   min_height: 0.5
   max_dist: 2
