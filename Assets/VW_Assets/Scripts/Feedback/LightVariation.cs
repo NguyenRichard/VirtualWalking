@@ -4,6 +4,26 @@ using UnityEngine;
 
 public class LightVariation : Feedback
 {
+
+    [SerializeField]
+    private AnimationCurve _lightIntensityCurb;
+    public AnimationCurve LightIntensityCurb
+    {
+        get { return _lightIntensityCurb; }
+        set
+        {
+            _lightIntensityCurb = value;
+        }
+    }
+
+    public void UpdateLightIntensityCurb()
+    {
+        varyingLightIntensity.LightIntensityCurb = _lightIntensityCurb;
+    }
+
+
+    private VaryingLightIntensity varyingLightIntensity;
+
     protected override void InitScene()
     {
         var prefabVaryingLight = Resources.Load<GameObject>("Prefabs/VaryingLight");
@@ -15,6 +35,8 @@ public class LightVariation : Feedback
         Debug.Assert(playerController, "You must add OVRPlayerController because it is needed.");
         varyingLight.transform.SetParent(playerController.transform);
 
+        varyingLightIntensity = varyingLight.GetComponent<VaryingLightIntensity>();
+
         components.Add(varyingLight);
 
         isInit = true;
@@ -24,6 +46,7 @@ public class LightVariation : Feedback
 
     protected override void UpdateParameters()
     {
+        UpdateLightIntensityCurb();
         SwitchActiveState();
     }
 }

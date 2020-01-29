@@ -9,7 +9,12 @@ public class VaryingLightIntensity : MonoBehaviour
     SpeedIndicator _speedIndicatorScript;
     Light _varyingLight;
     float _lightIntensity;
-    [SerializeField] private AnimationCurve _lightIntensityCurb;
+
+    private AnimationCurve _lightIntensityCurb;
+    public AnimationCurve LightIntensityCurb
+    {
+        set { _lightIntensityCurb = value; }
+    }
 
     void Start() 
     {
