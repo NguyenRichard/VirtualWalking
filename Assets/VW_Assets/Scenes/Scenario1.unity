@@ -682,6 +682,7 @@ GameObject:
   - component: {fileID: 220073561}
   - component: {fileID: 220073560}
   - component: {fileID: 220073562}
+  - component: {fileID: 220073563}
   m_Layer: 0
   m_Name: FeedbackManager
   m_TagString: Untagged
@@ -738,6 +739,20 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   intensity: 130
+  dist: 0.1
+--- !u!114 &220073563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220073559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71f74a6c85c97d48b5cf0a4d0943e1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 1
   dist: 0.1
 --- !u!1 &259511170
 GameObject:
