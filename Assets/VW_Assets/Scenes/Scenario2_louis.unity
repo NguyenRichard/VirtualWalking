@@ -545,6 +545,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   intensity: 255
+  dist: 0.1
 --- !u!114 &1029168813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,7 +559,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  dist: 0
+  dist: 0.1
   volume: 0
 --- !u!4 &1029168814
 Transform:
