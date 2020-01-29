@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/VW_Assets/Scenes/Scenario2_nicolas.unity
     guid: ca56a6a2fd0ccf04ba8ae51ed9203853
+  - enabled: 0
+    path: Assets/VW_Assets/Scenes/sceneHandGrab.unity
+    guid: cbd93ddd8555ded4ca326124010c61bc
   m_configObjects: {}

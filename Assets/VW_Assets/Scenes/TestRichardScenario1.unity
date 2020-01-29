@@ -238,11 +238,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DataManager
       objectReference: {fileID: 0}
-    - target: {fileID: 6366163750447910167, guid: 1e9b81541d519204799e94b853eced33,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6366163750447910173, guid: 1e9b81541d519204799e94b853eced33,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -303,36 +298,6 @@ PrefabInstance:
       propertyPath: headGameObject
       value: 
       objectReference: {fileID: 1599633793}
-    - target: {fileID: 6366163750447910161, guid: 1e9b81541d519204799e94b853eced33,
-        type: 3}
-      propertyPath: impact
-      value: 
-      objectReference: {fileID: 8300000, guid: f7202d759d7a4d5449e48e003728cea5, type: 3}
-    - target: {fileID: 6366163750447910161, guid: 1e9b81541d519204799e94b853eced33,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6366163750447910161, guid: 1e9b81541d519204799e94b853eced33,
-        type: 3}
-      propertyPath: VerticalThreshold
-      value: 0.006
-      objectReference: {fileID: 0}
-    - target: {fileID: 6366163750447910161, guid: 1e9b81541d519204799e94b853eced33,
-        type: 3}
-      propertyPath: distThreshold
-      value: 0.03
-      objectReference: {fileID: 0}
-    - target: {fileID: 6366163750447910161, guid: 1e9b81541d519204799e94b853eced33,
-        type: 3}
-      propertyPath: offsetY
-      value: 0.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 6366163750447910166, guid: 1e9b81541d519204799e94b853eced33,
-        type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 8300000, guid: f7202d759d7a4d5449e48e003728cea5, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e9b81541d519204799e94b853eced33, type: 3}
 --- !u!1 &220073559

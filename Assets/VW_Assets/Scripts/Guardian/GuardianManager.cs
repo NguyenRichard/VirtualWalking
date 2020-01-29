@@ -63,9 +63,6 @@ public class GuardianManager : MonoBehaviour
     [SerializeField]
     private float refreshTime = 1;
 
-    [SerializeField]
-    private Transform sceneOrigin;
-
     private GameObject guardian;
     private Mesh mesh;
 
@@ -98,7 +95,7 @@ public class GuardianManager : MonoBehaviour
         }
 
         createGuardian();
-        filters.Add(new GFilterCalibrate(guardian, refreshTime,sceneOrigin));
+        filters.Add(new GFilterCalibrate(guardian, refreshTime));
 #endif
 
         filters.Add(new GFilterHeightByDist(guardian, max_height, min_height, max_dist, min_dist));
@@ -128,6 +125,7 @@ public class GuardianManager : MonoBehaviour
 
         guardian.AddComponent<CustomGuardianData>();
         guardian.GetComponent<Renderer>().enabled = _isRendered;
+        
 
     }
 
