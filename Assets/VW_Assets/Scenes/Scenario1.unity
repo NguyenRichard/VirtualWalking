@@ -394,12 +394,12 @@ PrefabInstance:
     - target: {fileID: 6464771186281496121, guid: 821b9372354e57a4e9d463f8af1218e2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6464771186281496121, guid: 821b9372354e57a4e9d463f8af1218e2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.74
       objectReference: {fileID: 0}
     - target: {fileID: 6464771186281496121, guid: 821b9372354e57a4e9d463f8af1218e2,
         type: 3}
@@ -702,7 +702,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  dist: 0
+  dist: 0.1
   volume: 0.5
 --- !u!4 &220073561
 Transform:
@@ -738,6 +738,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   intensity: 130
+  dist: 0.1
 --- !u!1 &259511170
 GameObject:
   m_ObjectHideFlags: 0
@@ -848,12 +849,12 @@ PrefabInstance:
     - target: {fileID: 6464771186281496121, guid: 821b9372354e57a4e9d463f8af1218e2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6464771186281496121, guid: 821b9372354e57a4e9d463f8af1218e2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.71
       objectReference: {fileID: 0}
     - target: {fileID: 6464771186281496121, guid: 821b9372354e57a4e9d463f8af1218e2,
         type: 3}
@@ -1309,6 +1310,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2144655067314910260, guid: 821b9372354e57a4e9d463f8af1218e2,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6464771186281496121, guid: 821b9372354e57a4e9d463f8af1218e2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1508,7 +1514,7 @@ PrefabInstance:
     - target: {fileID: 6464771186281496121, guid: 821b9372354e57a4e9d463f8af1218e2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 6464771186281496121, guid: 821b9372354e57a4e9d463f8af1218e2,
         type: 3}
@@ -2262,7 +2268,7 @@ PrefabInstance:
     - target: {fileID: 6464771186281496121, guid: 821b9372354e57a4e9d463f8af1218e2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.3
+      value: 0.35
       objectReference: {fileID: 0}
     - target: {fileID: 6464771186281496121, guid: 821b9372354e57a4e9d463f8af1218e2,
         type: 3}
@@ -2483,7 +2489,7 @@ PrefabInstance:
     - target: {fileID: 6464771186281496121, guid: 821b9372354e57a4e9d463f8af1218e2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.3
+      value: -0.35
       objectReference: {fileID: 0}
     - target: {fileID: 6464771186281496121, guid: 821b9372354e57a4e9d463f8af1218e2,
         type: 3}
@@ -3103,7 +3109,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1858130271}
   m_Layer: 0
-  m_Name: tunnel4(Haut et large)
+  m_Name: "tunnel4(Tr\xE8s bas et largeur moyenne)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3240,6 +3246,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6464771186281496121, guid: 821b9372354e57a4e9d463f8af1218e2,
     type: 3}
   m_PrefabInstance: {fileID: 2047261064}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2049220829 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2404056232404713458, guid: 7c1b82a1e0762804884500cd2e7a4585,
+    type: 3}
+  m_PrefabInstance: {fileID: 7103082589616968633}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2090190876
 GameObject:
@@ -3674,6 +3686,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: HandR
       objectReference: {fileID: 0}
+    - target: {fileID: 2367619046650041210, guid: 7c1b82a1e0762804884500cd2e7a4585,
+        type: 3}
+      propertyPath: m_gripTransform
+      value: 
+      objectReference: {fileID: 2049220829}
     - target: {fileID: 8583737082967558746, guid: 7c1b82a1e0762804884500cd2e7a4585,
         type: 3}
       propertyPath: m_controller
