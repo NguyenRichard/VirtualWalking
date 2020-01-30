@@ -80,8 +80,9 @@ public class HandInWall : MonoBehaviour
         {
             if (WallDistToPlayer.closestWallLHand != null)
             {
-                newIntensity = Vector3.Distance(WallDistToPlayer.closestWallLHand.WallClosestPoint, gameObject.transform.position);
-                
+                //newIntensity = Vector3.Distance(WallDistToPlayer.closestWallLHand.WallClosestPoint, gameObject.transform.position);
+                newIntensity = Vector3.Magnitude(WallDistToPlayer.closestWallLHand.Direction);
+
                 newIntensity = Mathf.Lerp(intensity, 0, Mathf.InverseLerp(0, distMax, newIntensity));
                 //Debug.Log("--------------------------- new intensity hand = " + newIntensity + "---------------------------------------");
                 eventList.TriggerVibration(40, 1, (int)newIntensity, OVRInput.Controller.LTouch);
@@ -94,8 +95,11 @@ public class HandInWall : MonoBehaviour
             if (WallDistToPlayer.closestWallRHand != null)
             {
                 //Debug.Log("---------------------------- wall distance ---------------------");
-                newIntensity = Vector3.Distance(WallDistToPlayer.closestWallRHand.WallClosestPoint, gameObject.transform.position);
-                
+                // newIntensity = Vector3.Distance(WallDistToPlayer.closestWallRHand.WallClosestPoint, gameObject.transform.position);
+
+                newIntensity = Vector3.Magnitude(WallDistToPlayer.closestWallRHand.Direction);
+
+
                 newIntensity = Mathf.Lerp(intensity, 0, Mathf.InverseLerp(0, distMax, newIntensity));
                 //Debug.Log("--------------------------- new intensity hand = " + newIntensity + "---------------------------------------");
                 eventList.TriggerVibration(40, 1, (int)newIntensity, OVRInput.Controller.RTouch);

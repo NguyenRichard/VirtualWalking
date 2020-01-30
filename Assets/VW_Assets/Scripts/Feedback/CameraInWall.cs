@@ -43,7 +43,9 @@ public class CameraInWall : MonoBehaviour
         else if(WallDistToPlayer.closestWallHead != null)
         {
             blackScreen.SetActive(true);
-            newIntensity = Vector3.Distance(WallDistToPlayer.closestWallHead.WallClosestPoint, gameObject.transform.position) - 0.10f;
+            //newIntensity = Vector3.Distance(WallDistToPlayer.closestWallHead.WallClosestPoint, gameObject.transform.position) - 0.10f;
+            newIntensity = Vector3.Magnitude(WallDistToPlayer.closestWallHead.Direction);
+
             //Debug.Log("-------------------- Intensity head = " + newIntensity + " ----------------------------");
             //Debug.Log("******************** Inverse Lerp = " + Mathf.InverseLerp(0, distMax, newIntensity) + "***********************************");
             newIntensity = Mathf.Lerp(1, 0, Mathf.InverseLerp(0, distMax, newIntensity));

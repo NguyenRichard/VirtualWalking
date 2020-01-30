@@ -59,8 +59,8 @@ public class WallDistToPlayer : MonoBehaviour
     {
         if(closestWallLHand == wallLHand && wallLHand != null)
         {
-            Gizmos.DrawSphere(wallLHand.WallClosestPoint, 0.1f);
-            Gizmos.DrawSphere(handLClosestPoint, 0.1f);
+            Gizmos.DrawSphere(wallLHand.WallClosestPoint, 0.005f);
+            Gizmos.DrawSphere(handLClosestPoint, 0.005f);
         }
         if (closestWallRHand == wallRHand && wallRHand != null)
         {

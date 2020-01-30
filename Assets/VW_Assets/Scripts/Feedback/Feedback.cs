@@ -40,7 +40,7 @@ public abstract class Feedback : MonoBehaviour
     void Awake()
     {
         components = new List<GameObject>();
-        InitScene();   
+        InitScene();
     }
 
     /// <summary>
