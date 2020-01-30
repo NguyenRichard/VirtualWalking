@@ -41,6 +41,7 @@ public abstract class Feedback : MonoBehaviour
     {
         components = new List<GameObject>();
         InitScene();
+        Deactivate();
     }
 
     /// <summary>

@@ -57,12 +57,10 @@ public class StepDetector : MonoBehaviour {
         leftfootstepPrefab = Resources.Load<GameObject>("Prefabs/LeftFootstep");
         rightfootstepPrefab = Resources.Load<GameObject>("Prefabs/RightFootstep");
 
-        print("aouak");
     }
 
     private void OnEnable()
     {
-        Debug.Log("pouet");
         pos = dm.NbPos;
         Steps = new List<Step>
         {
