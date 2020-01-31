@@ -151,5 +151,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d2970fc7b2017e44b8b1d2954f32478, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  opacityCurb:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0041656494
+      value: 0
+      inSlope: 1.004183
+      outSlope: 1.004183
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1.004183
+      outSlope: 1.004183
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   isInWall: 0
   blackScreen: {fileID: 3379155664412014442}

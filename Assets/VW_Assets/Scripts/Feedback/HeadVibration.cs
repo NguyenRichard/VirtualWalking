@@ -7,14 +7,14 @@ public class HeadVibration  : Feedback
 {
     ///Distance where the black screen start to appear.
     [SerializeField]
-    private float dist = 0;
-    public float Dist
+    private float distanceStart = 0;
+    public float DistanceStart
     {
-        get { return dist; }
+        get { return distanceStart; }
 
         set
         {
-            dist = value;
+            distanceStart = value;
             UpdateDist();
         }
 
@@ -22,11 +22,11 @@ public class HeadVibration  : Feedback
 
     public void UpdateDist()
     {
-        if (dist < 0)
+        if (distanceStart < 0)
         {
-            dist = 0f;
+            distanceStart = 0f;
         }
-        _vibrationSound.DistMax = Dist;
+        _vibrationSound.DistMax = DistanceStart;
     }
 
 

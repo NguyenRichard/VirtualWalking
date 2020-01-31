@@ -11,8 +11,8 @@ public class StepDetector : MonoBehaviour {
     public GameObject headGameObject;
 
     private List<GameObject> footstepList;
-    [SerializeField]
-    private int stepNumber = 10;
+   // [SerializeField]
+ //   private int stepNumber = 10;
 
     public DataManager dm;
     

@@ -500,7 +500,6 @@ Transform:
   - {fileID: 1155219394}
   - {fileID: 1698999095}
   - {fileID: 836810230}
-  - {fileID: 1858130271}
   m_Father: {fileID: 1027890466}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -535,7 +534,7 @@ Transform:
   m_Children:
   - {fileID: 324105955}
   m_Father: {fileID: 1027890466}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &194498495
 BoxCollider:
@@ -576,6 +575,7 @@ GameObject:
   - component: {fileID: 220073562}
   - component: {fileID: 220073563}
   - component: {fileID: 220073564}
+  - component: {fileID: 220073565}
   m_Layer: 0
   m_Name: FeedbackManager
   m_TagString: Untagged
@@ -596,8 +596,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  dist: 0.05
-  volume: 0.5
+  distanceStart: 0.1
+  soundVolume: 0
+  blackScreenOpacityCurb:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &220073561
 Transform:
   m_ObjectHideFlags: 0
@@ -625,8 +649,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  intensity: 130
-  dist: 0.05
+  distanceStart: 0.1
+  intensityInWall: 255
 --- !u!114 &220073563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -640,7 +664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  dist: 0.1
+  distanceStart: 0.1
 --- !u!114 &220073564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -654,6 +678,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
+  horizontalTreshold: 0.00001
+  verticalTreshold: 0.2
+  timeTreshold: 10
+  offsetY: 0.6
+--- !u!114 &220073565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 220073559}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2869fd6a409702342a257e1c616f217e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isActive: 1
+  _lightIntensityCurb:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &259511170
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,7 +752,7 @@ Transform:
   - {fileID: 515350617}
   - {fileID: 839259}
   m_Father: {fileID: 1027890466}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &259511172
 MeshCollider:
@@ -2029,6 +2094,7 @@ Transform:
   - {fileID: 1707539813}
   - {fileID: 94633913}
   - {fileID: 143982018}
+  - {fileID: 1858130271}
   - {fileID: 1311959383}
   - {fileID: 259511171}
   - {fileID: 194498494}
@@ -2374,7 +2440,7 @@ Transform:
   - {fileID: 746759061}
   - {fileID: 1630921144}
   m_Father: {fileID: 1027890466}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1589282374
 PrefabInstance:
@@ -3031,8 +3097,8 @@ Transform:
   - {fileID: 275198039}
   - {fileID: 89419944}
   - {fileID: 536914095}
-  m_Father: {fileID: 143982018}
-  m_RootOrder: 4
+  m_Father: {fileID: 1027890466}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1953564362 stripped
 Transform:

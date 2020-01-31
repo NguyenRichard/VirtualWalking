@@ -1,9 +1,79 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class StepFeedbacks : Feedback
 {
+    [SerializeField]
+    private float horizontalTreshold;
+    public float HorizontalTreshold
+    {
+        get { return horizontalTreshold; }
+        set {
+            horizontalTreshold = value;
+            UpdateDistanceTreshold();
+        }
+    }
+
+    public void UpdateDistanceTreshold()
+    {
+        stepDetector.distThreshold = horizontalTreshold;
+    }
+
+    [SerializeField]
+    private float verticalTreshold;
+    public float VerticalTreshold
+    {
+        get { return verticalTreshold; }
+        set
+        {
+            verticalTreshold = value;
+            UpdateVerticalTreshdold();
+        }
+    }
+
+    private void UpdateVerticalTreshdold()
+    {
+        stepDetector.VerticalThreshold = verticalTreshold;
+    }
+
+    [SerializeField]
+    private ulong timeTreshold;
+    public ulong TimeTreshold
+    {
+        get { return timeTreshold; }
+        set
+        {
+            timeTreshold = value;
+            UpdateTimeTreshold();
+        }
+    }
+
+    private void UpdateTimeTreshold()
+    {
+        stepDetector.timeThreshold = timeTreshold;
+    }
+
+    [SerializeField]
+    private float offsetY;
+    public float OffsetY
+    {
+        get { return offsetY; }
+        set
+        {
+            offsetY = value;
+            UpdateOffsetY();
+        }
+    }
+
+    private void UpdateOffsetY()
+    {
+        stepDetector.offsetY = offsetY;
+    }
+
+    private StepDetector stepDetector;
+
     protected override void InitScene()
     {
         var prefabDataManager = Resources.Load<GameObject>("Prefabs/DataManager");
@@ -14,7 +84,8 @@ public class StepFeedbacks : Feedback
         GameObject forwardDirection = GameObject.Find("OVRPlayerController/ForwardDirection");
         Debug.Assert(forwardDirection, "You must add OVRPlayerController because it is needed.");
 
-        dataManager.GetComponent<StepDetector>().headGameObject = forwardDirection;
+        stepDetector = dataManager.GetComponent<StepDetector>();
+        stepDetector.headGameObject = forwardDirection;
 
         components.Add(dataManager);
 
@@ -25,6 +96,10 @@ public class StepFeedbacks : Feedback
 
     protected override void UpdateParameters()
     {
+        UpdateOffsetY();
+        UpdateTimeTreshold();
+        UpdateVerticalTreshdold();
+        UpdateDistanceTreshold();
         SwitchActiveState();
     }
 }

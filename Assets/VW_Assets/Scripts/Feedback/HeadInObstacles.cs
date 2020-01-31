@@ -7,14 +7,14 @@ public class HeadInObstacles  : Feedback
 {
     ///Distance where the black screen start to appear.
     [SerializeField]
-    private float dist = 0;
-    public float Dist
+    private float distanceStart = 0;
+    public float DistanceStart
     {
-        get { return dist; }
+        get { return distanceStart; }
 
         set
         {
-            dist = value;
+            distanceStart = value;
             UpdateDist();
         }
 
@@ -22,24 +22,32 @@ public class HeadInObstacles  : Feedback
 
     public void UpdateDist()
     {
-        if (dist < 0)
+        if (distanceStart < 0)
         {
-            dist = 0f;
+            distanceStart = 0f;
         }
-        cameraInWall.DistMax = Dist;
+        cameraInWall.DistMax = DistanceStart;
     }
 
     ///Volume of the sound when you are in the obstacles.
     [SerializeField]
     [Range(0.0f, 1.0f)]
-    private float volume = 0;
-    public float Volume
+    private float soundVolume = 0;
+    public float SoundVolume
     {
-        get { return volume; }
+        get { return soundVolume; }
 
         set
         {
-            volume = value;
+            soundVolume = value;
+            if (soundVolume < 0)
+            {
+                soundVolume = 0f;
+            }
+            else if (soundVolume > 1)
+            {
+                soundVolume = 1f;
+            }
             UpdateVolume();
         }
 
@@ -47,17 +55,24 @@ public class HeadInObstacles  : Feedback
 
     public void UpdateVolume()
     {
-        if (volume < 0)
-        {
-            volume = 0f;
-        }
-        else if (volume > 1)
-        {
-            volume = 1f;
-        }
+        sound.source.volume = soundVolume;
+    }
 
-        sound.source.volume = volume;
+    [SerializeField]
+    private AnimationCurve blackScreenOpacityCurb;
+    public AnimationCurve BlackScreenOpacityCurb
+    {
+        get { return blackScreenOpacityCurb; }
+        set
+        {
+            blackScreenOpacityCurb = value;
+            UpdateBlackScreenOpacityCurb();
+        }
+    }
 
+    private void UpdateBlackScreenOpacityCurb()
+    {
+        cameraInWall.OpacityCurb = blackScreenOpacityCurb;
     }
 
     private CameraInWall cameraInWall;
@@ -89,6 +104,7 @@ public class HeadInObstacles  : Feedback
 
     protected override void UpdateParameters()
     {
+        UpdateBlackScreenOpacityCurb();
         UpdateDist();
         UpdateVolume();
         SwitchActiveState();

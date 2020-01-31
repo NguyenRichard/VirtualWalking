@@ -20,19 +20,27 @@ public class HandInWall : MonoBehaviour
     }
 
     [SerializeField]
-    private int intensity = 255;
-    public int Intensity
+    private int intensityInWall = 255;
+    public int IntensityInWall
     {
-        get { return intensity; }
+        get { return intensityInWall; }
 
         set
         {
-            intensity = value;
+            intensityInWall = value;
         }
 
     }
 
-    private float newIntensity = 0;
+    [SerializeField]
+    private AnimationCurve intensityCurb;
+    public AnimationCurve IntensityCurb
+    {
+        get { return intensityCurb; }
+        set { intensityCurb = value; }
+    }
+
+    private float distToWall = 0;
 
     private float distMax = 0.10f;
 
@@ -67,25 +75,27 @@ public class HandInWall : MonoBehaviour
         {
             if (left)
             {
-                eventList.TriggerVibration(40, 1, intensity, OVRInput.Controller.LTouch);
+                eventList.TriggerVibration(40, 1, intensityInWall, OVRInput.Controller.LTouch);
             }
             else
             {
-                eventList.TriggerVibration(40, 1, intensity, OVRInput.Controller.RTouch);
+                eventList.TriggerVibration(40, 1, intensityInWall, OVRInput.Controller.RTouch);
             }
 
 
         }
-        if (left)
+        else if (left)
         {
             if (WallDistToPlayer.closestWallLHand != null)
             {
                 //newIntensity = Vector3.Distance(WallDistToPlayer.closestWallLHand.WallClosestPoint, gameObject.transform.position);
-                newIntensity = Vector3.Magnitude(WallDistToPlayer.closestWallLHand.Direction);
+                distToWall = Vector3.Magnitude(WallDistToPlayer.closestWallLHand.Direction);
 
-                newIntensity = Mathf.Lerp(intensity, 0, Mathf.InverseLerp(0, distMax, newIntensity));
+                // distToWall = Mathf.Lerp(intensityInWall, 0, Mathf.InverseLerp(0, distMax, distToWall));
                 //Debug.Log("--------------------------- new intensity hand = " + newIntensity + "---------------------------------------");
-                eventList.TriggerVibration(40, 1, (int)newIntensity, OVRInput.Controller.LTouch);
+                // eventList.TriggerVibration(40, 1, (int)distToWall, OVRInput.Controller.LTouch);
+
+                eventList.TriggerVibration(40, 1, CalculateIntensity(distToWall), OVRInput.Controller.LTouch);
             }
         }
         else
@@ -97,16 +107,41 @@ public class HandInWall : MonoBehaviour
                 //Debug.Log("---------------------------- wall distance ---------------------");
                 // newIntensity = Vector3.Distance(WallDistToPlayer.closestWallRHand.WallClosestPoint, gameObject.transform.position);
 
-                newIntensity = Vector3.Magnitude(WallDistToPlayer.closestWallRHand.Direction);
+                distToWall = Vector3.Magnitude(WallDistToPlayer.closestWallRHand.Direction);
 
 
-                newIntensity = Mathf.Lerp(intensity, 0, Mathf.InverseLerp(0, distMax, newIntensity));
+                // distToWall = Mathf.Lerp(intensityInWall, 0, Mathf.InverseLerp(0, distMax, distToWall));
                 //Debug.Log("--------------------------- new intensity hand = " + newIntensity + "---------------------------------------");
-                eventList.TriggerVibration(40, 1, (int)newIntensity, OVRInput.Controller.RTouch);
+                // eventList.TriggerVibration(40, 1, (int)distToWall, OVRInput.Controller.RTouch);
+
+                eventList.TriggerVibration(40, 1, CalculateIntensity(distToWall), OVRInput.Controller.RTouch);
             }
         }
 
     }
+
+    private int CalculateIntensity(float distance)
+    {
+        //float value = Mathf.Lerp(intensityInWall, 0, Mathf.InverseLerp(0, distMax, distToWall));
+        float value = 1 - Mathf.InverseLerp(0, distMax, distToWall);
+
+        value = intensityCurb.Evaluate(value);
+
+        if (value > 1)
+        {
+            value = 1;
+        }
+        else if (value < 0)
+        {
+            value = 0;
+        }
+
+        Debug.Log("Intensity=" + Mathf.Lerp(0, intensityInWall, value));
+
+        return (int)Mathf.Lerp(0,intensityInWall,value);
+    }
+
+
     void OnTriggerEnter(Collider other)
     {
         Debug.Log("------------------------- Collision ---------------------------------");

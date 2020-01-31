@@ -1,51 +1,23 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class HandInObstacle : Feedback
 {
-
-    ///Volume of the sound when you are in the obstacles.
     [SerializeField]
-    [Range(0, 255)]
-    private int intensity = 255;
-    public int Intensity
+    private float distanceStart = 0;
+    public float DistanceStart
     {
-        get { return intensity; }
+        get { return distanceStart; }
 
         set
         {
-            intensity = value;
-            UpdateIntensity();
-        }
-
-    }
-
-    public void UpdateIntensity()
-    {
-        if (intensity < 0)
-        {
-            intensity = 0;
-        }
-        else if (intensity > 255)
-        {
-            intensity = 255;
-        }
-
-        components[0].GetComponent<HandInWall>().Intensity = intensity;
-        components[1].GetComponent<HandInWall>().Intensity = intensity;
-
-    }
-
-    [SerializeField]
-    private float dist = 0;
-    public float Dist
-    {
-        get { return dist; }
-
-        set
-        {
-            dist = value;
+            if (distanceStart < 0)
+            {
+                distanceStart = 0f;
+            }
+            distanceStart = value;
             UpdateDist();
         }
 
@@ -53,12 +25,56 @@ public class HandInObstacle : Feedback
 
     public void UpdateDist()
     {
-        if (dist < 0)
+        leftHandInWall.DistMax = distanceStart;
+        rightHandInWall.DistMax = distanceStart;
+    }
+
+    [SerializeField]
+    [Range(0, 255)]
+    private int intensityInWall = 255;
+    public int IntensityInWall
+    {
+        get { return intensityInWall; }
+
+        set
         {
-            dist = 0f;
+            if (intensityInWall < 0)
+            {
+                intensityInWall = 0;
+            }
+            else if (intensityInWall > 255)
+            {
+                intensityInWall = 255;
+            }
+            intensityInWall = value;
+            UpdateIntensity();
         }
-        leftHandInWall.DistMax = dist;
-        rightHandInWall.DistMax = dist;
+
+    }
+
+    public void UpdateIntensity()
+    {
+
+        rightHandInWall.IntensityInWall = intensityInWall;
+        leftHandInWall.IntensityInWall = intensityInWall;
+
+    }
+
+    [SerializeField]
+    private AnimationCurve vibrationIntensityCurb;
+    public AnimationCurve VibrationIntensityCurb
+    {
+        get { return vibrationIntensityCurb; }
+        set {
+            vibrationIntensityCurb = value;
+            UpdateVibrationIntensityCurb();
+        }
+    }
+
+    private void UpdateVibrationIntensityCurb()
+    {
+        rightHandInWall.IntensityCurb = vibrationIntensityCurb;
+        leftHandInWall.IntensityCurb = vibrationIntensityCurb;
     }
 
     private HandInWall rightHandInWall;
@@ -101,6 +117,7 @@ public class HandInObstacle : Feedback
 
     protected override void UpdateParameters()
     {
+        UpdateVibrationIntensityCurb();
         UpdateDist();
         UpdateIntensity();
     }

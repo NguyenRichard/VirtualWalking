@@ -21,8 +21,16 @@ public class CameraInWall : MonoBehaviour
     }
 
     [SerializeField]
+    private AnimationCurve opacityCurb;
+    public AnimationCurve OpacityCurb
+    {
+        get { return opacityCurb; }
+        set { opacityCurb = value; }
+    }
+
+    [SerializeField]
     private bool isInWall = false;
-    private float newIntensity = 0;
+    private float distToWall = 0;
 
     int numberOfInWall = 0;
 
@@ -43,15 +51,12 @@ public class CameraInWall : MonoBehaviour
         else if(WallDistToPlayer.closestWallHead != null)
         {
             blackScreen.SetActive(true);
-            //newIntensity = Vector3.Distance(WallDistToPlayer.closestWallHead.WallClosestPoint, gameObject.transform.position) - 0.10f;
-            newIntensity = Vector3.Magnitude(WallDistToPlayer.closestWallHead.Direction);
 
-            //Debug.Log("-------------------- Intensity head = " + newIntensity + " ----------------------------");
-            //Debug.Log("******************** Inverse Lerp = " + Mathf.InverseLerp(0, distMax, newIntensity) + "***********************************");
-            newIntensity = Mathf.Lerp(1, 0, Mathf.InverseLerp(0, distMax, newIntensity));
-            //Debug.Log("-------------------- Intensity head = " + newIntensity + " ----------------------------");
+            //distToWall = Vector3.Distance(WallDistToPlayer.closestWallHead.WallClosestPoint, gameObject.transform.position) - 0.10f;
+            distToWall = Vector3.Magnitude(WallDistToPlayer.closestWallHead.Direction);
+
             Color baseColor = blackScreen.GetComponent<Renderer>().material.color;
-            baseColor.a = newIntensity;
+            baseColor.a = CalculateOpacity(distToWall);
             blackScreen.GetComponent<Renderer>().material.color = baseColor;
             
         }
@@ -60,6 +65,26 @@ public class CameraInWall : MonoBehaviour
             blackScreen.SetActive(false);
         }
     }
+
+    private float CalculateOpacity(float distance)
+    {
+        float value = Mathf.Lerp(1, 0, Mathf.InverseLerp(0, distMax, distToWall));
+
+        value = opacityCurb.Evaluate(value);
+
+        if(value > 1)
+        {
+            value = 1;
+        }
+        else if(value < 0)
+        {
+            value = 0;
+        }
+
+        return value;
+    }
+
+
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "wall")
