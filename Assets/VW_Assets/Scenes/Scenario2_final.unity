@@ -3625,8 +3625,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  intensity: 255
-  dist: 0.05
+  distanceStart: 0.05
+  intensityInWall: 255
+  vibrationIntensityCurb:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &1029168813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3640,8 +3664,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
-  dist: 0.1
-  volume: 0
+  distanceStart: 0.05
+  soundVolume: 0
+  blackScreenOpacityCurb:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &1029168814
 Transform:
   m_ObjectHideFlags: 0
@@ -3719,6 +3767,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isActive: 1
+  horizontalTreshold: 0.08
+  verticalTreshold: 0.04
+  timeTreshold: 4
+  offsetY: 0.02
 --- !u!1001 &1061777344
 PrefabInstance:
   m_ObjectHideFlags: 0
