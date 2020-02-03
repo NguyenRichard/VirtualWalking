@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Guardian modifier that calibrate the custom guardian on the official one on refresh time.
+/// </summary>
 public class GFilterCalibrate : GFilter
 {
 

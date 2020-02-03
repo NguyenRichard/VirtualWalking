@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
 
+/// <summary>
+/// Guardian modifier that changes the height of the custom guardian wall when the player is near.
+/// </summary>
 public class GFilterHeightByDist : GFilterByDistance 
 {
     private float _max_height = 5;
@@ -44,7 +47,10 @@ public class GFilterHeightByDist : GFilterByDistance
 
         for (int i = 0; i < vertices.Length/2; i++)
         {
-            //vertices[i+vertices.Length / 2].y = heightFromDist(_guardianData.Distances[i]);
+            //The height of each vertex is calculated according to its distance to the player.
+            //vertices[i + vertices.Length / 2].y = heightFromDist(_guardianData.Distances[i]);
+
+            //The wall height is uniform and depends on the closest vertex distance.
             vertices[i + vertices.Length / 2].y = heightFromDist(_guardianData.ClosestVertexDistance);
         }
     }

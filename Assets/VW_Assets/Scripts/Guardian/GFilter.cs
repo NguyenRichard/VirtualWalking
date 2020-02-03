@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Abstract class for the different modifiers to be applied on the custom Guardian.
+/// </summary>
 public abstract class GFilter
 {
     protected static CustomGuardianData _guardianData;
@@ -14,7 +17,6 @@ public abstract class GFilter
         }
         Debug.Assert(_guardianData, "The guardian was not instantiated");
     }
-
     public abstract void Apply();
 
     public static void UpdateGuardian() { _guardianData.UpdateGuardian(); }

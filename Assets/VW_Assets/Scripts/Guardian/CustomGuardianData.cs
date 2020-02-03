@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// This script contains all the data of the custom Guardian(play area) and update them.
+/// </summary>
 public class CustomGuardianData : MonoBehaviour
 {
+    //Main Camera
     private Transform _camera;
+
+    //Mesh of the GameObject representing the Guardian.
     private Mesh _customGuardianMesh;
 
+    //Array containing the color of each vertices.
     public Color[] _verticesColor;
     public Color[] VerticesColor
     {
@@ -18,17 +25,21 @@ public class CustomGuardianData : MonoBehaviour
     {
         get { return _vertices; }
     }
+    
+    //Array containing the distance between the main camera and the vertices on the XZ plan.
     private float[] _distances;
     public float[] Distances
     {
         get { return _distances; }
     }
 
+    //Minimum distance between the main camera and the vertices of the mesh.
     private float _closestVertexDistance;
     public float ClosestVertexDistance
     {
         get { return _closestVertexDistance; }
     }
+ 
     private int _indexClosestVertex;
     public int IndexClosestVertex => _indexClosestVertex;
 
@@ -37,7 +48,7 @@ public class CustomGuardianData : MonoBehaviour
         _camera = Camera.main.transform;
         _customGuardianMesh = gameObject.GetComponent<MeshFilter>().mesh;
         _vertices = _customGuardianMesh.vertices;
-        _distances = new float[_vertices.Length / 2];
+        _distances = new float[_vertices.Length / 2]; //We only need half of the point because we don't consider the distance on Y axis.
         _verticesColor = new Color[_vertices.Length];
 
     }
@@ -45,6 +56,7 @@ public class CustomGuardianData : MonoBehaviour
 
     public void UpdateGuardian()
     {
+        //Calculate the closest vertex.
         _indexClosestVertex = 0;
         _closestVertexDistance = distToCamera(_vertices[0]);
         _distances[0] = distToCamera(_vertices[0]);

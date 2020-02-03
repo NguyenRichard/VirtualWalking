@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Guardian modifier that changes the color of the custom guardian wall when the player is near.
+/// </summary>
 public class GFilterRGBAByDist : GFilterByDistance
 {
 

@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Guardian modifier that create a sound when the player is near the guardian. 
+/// </summary>
 public class GFilterBySound : GFilterByDistance
 {
     [SerializeField] private float _max_dist = 0.3f;
@@ -17,6 +20,7 @@ public class GFilterBySound : GFilterByDistance
     {
         _guardianWarningSound = guardianWarningSound;
     }
+
     public override void Apply()
     {
 

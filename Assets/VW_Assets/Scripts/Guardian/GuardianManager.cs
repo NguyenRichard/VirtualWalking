@@ -3,6 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using Oculus;
 
+/// <summary>
+/// This script instantiate the custom guardian and the different modifiers to be applied.
+/// It also updates the custom guardian with the modifiers.
+/// The parameters cannot be modified when the game is already launched.
+/// </summary>
 public class GuardianManager : MonoBehaviour
 {
     public GameObject cubeprefab;
@@ -114,7 +119,9 @@ public class GuardianManager : MonoBehaviour
         ApplyFilters();
     }
 
-    //This function creates the guardian using updateGuardian().
+    /// <summary>
+    /// This function creates the guardian using updateGuardian().
+    /// </summary>
     private void createGuardian()
     {
         guardian = Instantiate(guardian_prefab, Vector3.zero, Quaternion.identity);
@@ -129,8 +136,10 @@ public class GuardianManager : MonoBehaviour
 
     }
 
-    //This function takes as an input a list of vertices that corresponds to a 2D polygon.
-    //From, this list, it will instantiate a wall of a certain height.
+    /// <summary>
+    /// This function takes as an input a list of vertices that corresponds to a 2D polygon.
+    /// From, this list, it will instantiate a wall of a certain height.
+    /// </summary>
     private void updateGuardian()
     {
         int size = boundary_vertices.Count;
@@ -160,6 +169,9 @@ public class GuardianManager : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Apply the different modifiers defined on Start(). Update the custom object.
+    /// </summary>
     private void ApplyFilters()
     {
         foreach (var filter in filters)
