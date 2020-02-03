@@ -29,11 +29,12 @@ public class LightVariation : Feedback
         var prefabVaryingLight = Resources.Load<GameObject>("Prefabs/VaryingLight");
         Debug.Assert(prefabVaryingLight, "Couldn't find the VaryingLight prefabs in Assets.");
         GameObject varyingLight = Instantiate(prefabVaryingLight, Vector3.zero, Quaternion.identity);
+        varyingLight.transform.SetParent(GameObject.Find("OVRPlayerController/OVRCameraRig/TrackingSpace/CenterEyeAnchor").transform);
         Debug.Assert(varyingLight, "Couldn't instantiate prefabVaryingLight");
 
-        GameObject playerController = GameObject.Find("OVRPlayerController");
-        Debug.Assert(playerController, "You must add OVRPlayerController because it is needed.");
-        varyingLight.transform.SetParent(playerController.transform);
+        GameObject centerEyeAnchor = GameObject.Find("OVRPlayerController/OVRCameraRig/TrackingSpace/CenterEyeAnchor");
+        Debug.Assert(centerEyeAnchor, "You must add OVRPlayerController because its child CenterEyeAnchor is needed.");
+        varyingLight.transform.SetParent(centerEyeAnchor.transform);
 
         varyingLightIntensity = varyingLight.GetComponent<VaryingLightIntensity>();
 

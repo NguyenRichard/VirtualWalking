@@ -23,7 +23,9 @@ public abstract class GFilterByDistance : GFilter
     /// <returns> returns 0 for max_dist_guardian and 1 for min_dist_guardian. </returns>
     protected float distRatio(float dist)
     {
-        return (dist - _max_dist) / (_min_dist - _max_dist);
+        //return (dist - _max_dist) / (_min_dist - _max_dist);
+        Debug.Log("distRatio="+ Mathf.Lerp(_max_dist, _min_dist, dist));
+        return Mathf.Lerp(_max_dist, _min_dist, dist);
     }
 
 
