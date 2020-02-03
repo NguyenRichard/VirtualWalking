@@ -746,6 +746,16 @@ PrefabInstance:
       propertyPath: soundVolume
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 917140104734198743, guid: 70d1f08a0ad0cfb4eb8b2b53b7ad9794,
+        type: 3}
+      propertyPath: verticalTreshold
+      value: 0.005
+      objectReference: {fileID: 0}
+    - target: {fileID: 917140104734198743, guid: 70d1f08a0ad0cfb4eb8b2b53b7ad9794,
+        type: 3}
+      propertyPath: horizontalTreshold
+      value: 0.06
+      objectReference: {fileID: 0}
     - target: {fileID: 917140104734198742, guid: 70d1f08a0ad0cfb4eb8b2b53b7ad9794,
         type: 3}
       propertyPath: m_Enabled
