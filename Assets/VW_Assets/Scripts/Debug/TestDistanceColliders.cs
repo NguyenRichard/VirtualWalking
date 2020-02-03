@@ -16,7 +16,7 @@ public class TestDistanceColliders : MonoBehaviour
 
     private bool calculate = false;
 
-
+    //Si on calcule la distance, cherche la distance entre les deux points les plus proches des 2 colliders
     private void Update()
     {
 
@@ -34,7 +34,7 @@ public class TestDistanceColliders : MonoBehaviour
         }
     }
 
-
+    //Si on rentre dans le collider,commence à calculer la distance
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "wall")

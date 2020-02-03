@@ -6,11 +6,13 @@ public class DynamoSound : Feedback
 {
     protected override void InitScene()
     {
+        //load le prefab du prefab
         var prefabVaryingDynamo = Resources.Load<GameObject>("Prefabs/VaryingDynamo");
         Debug.Assert(prefabVaryingDynamo, "Couldn't find the VaryingLight prefabs in Assets.");
         GameObject varyingDynamo = Instantiate(prefabVaryingDynamo, Vector3.zero, Quaternion.identity);
         Debug.Assert(varyingDynamo, "Couldn't instantiate prefabVaryingDynamo");
 
+        //le déplace en tant que fils du bon GameObject
         GameObject playerController = GameObject.Find("OVRPlayerController");
         Debug.Assert(playerController, "You must add OVRPlayerController because it is needed.");
         varyingDynamo.transform.SetParent(playerController.transform);

@@ -9,7 +9,7 @@ public class VibrationSound : MonoBehaviour
     //Le booleen isInWall prend la valeur true si cette sphere entre dans un objet possédant le tag wall.
 
     private float distMax = 0.20f;
-
+    //Distance max de déclenchement du son de vibrations
     public float DistMax
     {
         get { return distMax; }
@@ -24,6 +24,7 @@ public class VibrationSound : MonoBehaviour
     private bool isInWall = false;
     private float newIntensity = 0;
 
+    //nombre de murs avec lesquels la tête est en collisions
     int numberOfInWall = 0;
 
     AudioSource _audioSource;

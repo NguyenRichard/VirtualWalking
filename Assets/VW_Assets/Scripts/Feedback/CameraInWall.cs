@@ -22,25 +22,33 @@ public class CameraInWall : MonoBehaviour
 
     [SerializeField]
     private AnimationCurve opacityCurb;
+
+    //courbe d'évolution de l'opacité de l'écran noir en fonction de la distance
     public AnimationCurve OpacityCurb
     {
         get { return opacityCurb; }
         set { opacityCurb = value; }
     }
-
+    
+    //Booléen corespondant au fait que la caméra est dans le mur ou non
     [SerializeField]
     private bool isInWall = false;
+    //Float correspondant à la distance entre la caméra et le mur
     private float distToWall = 0;
 
+    //Int correspondant au nombre de murs dans lequel se trouve la caméra
     int numberOfInWall = 0;
 
+    //Gameobject correspondant au blackscreen à instancier
     public GameObject blackScreen;
 
+    //Si la caméra est dans le mur, affiche un écran noir.
+    //Si elle est proche, affiche l'écran noir avec un niveau de transparence variant en fonction la distance au mur
+    //Sinon, désactive l'écran noir
     void Update()
     {
         if (isInWall)
         {
-            //Debug.Log("IN THE WALL");
             blackScreen.SetActive(true);
             Color baseColor = blackScreen.GetComponent<Renderer>().material.color;
             baseColor.a = 1;
@@ -50,10 +58,7 @@ public class CameraInWall : MonoBehaviour
         else if(WallDistToPlayer.closestWallHead != null)
         {
             blackScreen.SetActive(true);
-
-            //distToWall = Vector3.Distance(WallDistToPlayer.closestWallHead.WallClosestPoint, gameObject.transform.position) - 0.10f;
             distToWall = Vector3.Magnitude(WallDistToPlayer.closestWallHead.Direction);
-
             Color baseColor = blackScreen.GetComponent<Renderer>().material.color;
             baseColor.a = CalculateOpacity(distToWall);
             blackScreen.GetComponent<Renderer>().material.color = baseColor;
@@ -65,6 +70,7 @@ public class CameraInWall : MonoBehaviour
         }
     }
 
+    //Calcule l'opacité à donner à l'écran noir en fonction de la distance
     private float CalculateOpacity(float distance)
     {
         float value = Mathf.Lerp(1, 0, Mathf.InverseLerp(0, distMax, distToWall));
@@ -83,7 +89,7 @@ public class CameraInWall : MonoBehaviour
         return value;
     }
 
-
+    //Si on rentre dans un mur, met isInWall à true si c'est le premier mur avec lequel on rentre en contact et augmente le nombre de murs en collision de 1
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "wall")
@@ -97,6 +103,7 @@ public class CameraInWall : MonoBehaviour
         }
     }
 
+    //Si on sort d'un mur, diminue le nombre de mur en collision, et si ce nombre devient 1 passe IsInWall à false
     void OnTriggerExit(Collider other)
     {
         if (other.gameObject.tag == "wall")

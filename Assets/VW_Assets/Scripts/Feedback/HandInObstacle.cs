@@ -7,6 +7,9 @@ public class HandInObstacle : Feedback
 {
     [SerializeField]
     private float distanceStart = 0;
+    /// <summary>
+    /// Distance max jusqu'à laquelle les vibrations sont déclenchées
+    /// </summary>
     public float DistanceStart
     {
         get { return distanceStart; }
@@ -23,6 +26,7 @@ public class HandInObstacle : Feedback
 
     }
 
+    //Update la distance dans le script des deux mains
     public void UpdateDist()
     {
         leftHandInWall.DistMax = distanceStart;
@@ -32,6 +36,7 @@ public class HandInObstacle : Feedback
     [SerializeField]
     [Range(0, 255)]
     private int intensityInWall = 255;
+    //Intensité des vibrations dans les murs
     public int IntensityInWall
     {
         get { return intensityInWall; }
@@ -52,6 +57,7 @@ public class HandInObstacle : Feedback
 
     }
 
+    //Update l'intensité de vibration dans les murs des deux mains
     public void UpdateIntensity()
     {
 
@@ -62,6 +68,7 @@ public class HandInObstacle : Feedback
 
     [SerializeField]
     private AnimationCurve vibrationIntensityCurb;
+    //Courbe de variation de l'intensité des vibrations en fonction de la distance
     public AnimationCurve VibrationIntensityCurb
     {
         get { return vibrationIntensityCurb; }
@@ -71,6 +78,7 @@ public class HandInObstacle : Feedback
         }
     }
 
+    //Update les courbes de variation des vibrations des deux mains
     private void UpdateVibrationIntensityCurb()
     {
         rightHandInWall.IntensityCurb = vibrationIntensityCurb;

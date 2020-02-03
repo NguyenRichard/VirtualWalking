@@ -24,10 +24,6 @@ public class SpeedIndicator : MonoBehaviour
     // V2, l'autre me semble pas ouf
     void Update()
     {
-        //_distance = Vector3.Distance(_oldPosition, this.transform.position);
-        //realSpeedIndicator = (realSpeedIndicator + (Mathf.Clamp(_distance/Time.deltaTime, minimalSpeed, maximalSpeed) / (maximalSpeed - minimalSpeed)))/2.0f;
-        //_oldPosition = this.transform.position;
-        //realSpeedIndicator = (float)((int)(realSpeedIndicator * 10))/10.0f;
 
         _distance = Vector3.Distance(_oldPosition, transform.position);
         
