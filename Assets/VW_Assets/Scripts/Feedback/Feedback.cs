@@ -8,6 +8,7 @@ using UnityEngine;
 /// </summary>
 public abstract class Feedback : MonoBehaviour
 {
+    //liste des GameObjects correspondant à des feedbacks. Permettent e désactiver les feedbacks
     protected List<GameObject> components;
 
     protected bool isInit = false;
@@ -24,6 +25,7 @@ public abstract class Feedback : MonoBehaviour
         }
     }
 
+    //Update le statut d'un feedback
     public void SwitchActiveState()
     { 
         if (isActive)
@@ -81,6 +83,7 @@ public abstract class Feedback : MonoBehaviour
         }
     }
 
+    //fonction updatant le feedback, ainsi que ses parametres si necessaire.
     protected abstract void UpdateParameters();
 
     private void OnValidate()

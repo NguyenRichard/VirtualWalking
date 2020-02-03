@@ -6,8 +6,6 @@ public class VaryingDynamoSound : MonoBehaviour
     SpeedIndicator _speedIndicatorScript;
     AudioSource _audioSource;
     [SerializeField] AudioClip _dynamoAudioClip;
-    //float _varyingVolume;
-    //float _minVolume;
 
 
     void Start()

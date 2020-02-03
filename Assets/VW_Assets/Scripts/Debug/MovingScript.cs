@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//script déplaçant un objet à chaque frame
 public class MovingScript : MonoBehaviour
 {
     // Start is called before the first frame update

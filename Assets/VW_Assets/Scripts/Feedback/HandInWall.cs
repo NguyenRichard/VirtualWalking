@@ -8,6 +8,7 @@ public class HandInWall : MonoBehaviour
 
     [SerializeField]
     private bool left = false;
+    //Booléen indiquant si il s'agit de la main gauche ou droite
     public bool Left
     {
         get { return left; }
@@ -21,6 +22,7 @@ public class HandInWall : MonoBehaviour
 
     [SerializeField]
     private int intensityInWall = 255;
+    //Intensité des vibrations dans le mur
     public int IntensityInWall
     {
         get { return intensityInWall; }
@@ -34,6 +36,7 @@ public class HandInWall : MonoBehaviour
 
     [SerializeField]
     private AnimationCurve intensityCurb;
+    //Courbe de variation de l'intensité des vibrations
     public AnimationCurve IntensityCurb
     {
         get { return intensityCurb; }
@@ -43,7 +46,7 @@ public class HandInWall : MonoBehaviour
     private float distToWall = 0;
 
     private float distMax = 0.10f;
-
+    //Distance max de déclenchement des vibrations
     public float DistMax
     {
         get { return distMax; }
@@ -61,6 +64,7 @@ public class HandInWall : MonoBehaviour
     private bool isInWall = false;
     public EventList eventList;
 
+    //Récupère les variables necessaire au fonctionnement du feedback
     private void Start()
     {
         GameObject gameManager = GameObject.Find("GameManager");
@@ -88,41 +92,24 @@ public class HandInWall : MonoBehaviour
         {
             if (WallDistToPlayer.closestWallLHand != null)
             {
-                //newIntensity = Vector3.Distance(WallDistToPlayer.closestWallLHand.WallClosestPoint, gameObject.transform.position);
                 distToWall = Vector3.Magnitude(WallDistToPlayer.closestWallLHand.Direction);
-
-                // distToWall = Mathf.Lerp(intensityInWall, 0, Mathf.InverseLerp(0, distMax, distToWall));
-                //Debug.Log("--------------------------- new intensity hand = " + newIntensity + "---------------------------------------");
-                // eventList.TriggerVibration(40, 1, (int)distToWall, OVRInput.Controller.LTouch);
-
                 eventList.TriggerVibration(40, 1, CalculateIntensity(distToWall), OVRInput.Controller.LTouch);
             }
         }
         else
         {
-            //Debug.Log("--------------------------- right hand -----------------------------");
-            //Debug.Log(WallDistToPlayer.closestWallRHand != null);
             if (WallDistToPlayer.closestWallRHand != null)
             {
-                //Debug.Log("---------------------------- wall distance ---------------------");
-                // newIntensity = Vector3.Distance(WallDistToPlayer.closestWallRHand.WallClosestPoint, gameObject.transform.position);
-
                 distToWall = Vector3.Magnitude(WallDistToPlayer.closestWallRHand.Direction);
-
-
-                // distToWall = Mathf.Lerp(intensityInWall, 0, Mathf.InverseLerp(0, distMax, distToWall));
-                //Debug.Log("--------------------------- new intensity hand = " + newIntensity + "---------------------------------------");
-                // eventList.TriggerVibration(40, 1, (int)distToWall, OVRInput.Controller.RTouch);
-
                 eventList.TriggerVibration(40, 1, CalculateIntensity(distToWall), OVRInput.Controller.RTouch);
             }
         }
 
     }
 
+    //calcule l'intensité des vibrations en fonction de la distance.
     private int CalculateIntensity(float distance)
     {
-        //float value = Mathf.Lerp(intensityInWall, 0, Mathf.InverseLerp(0, distMax, distToWall));
         float value = 1 - Mathf.InverseLerp(0, distMax, distToWall);
 
         value = intensityCurb.Evaluate(value);
