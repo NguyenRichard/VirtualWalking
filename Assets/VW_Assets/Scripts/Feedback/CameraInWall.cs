@@ -42,7 +42,6 @@ public class CameraInWall : MonoBehaviour
         {
             //Debug.Log("IN THE WALL");
             blackScreen.SetActive(true);
-            //AudioManager.PlaySFX("InObstaclesWarningSound");
             Color baseColor = blackScreen.GetComponent<Renderer>().material.color;
             baseColor.a = 1;
             blackScreen.GetComponent<Renderer>().material.color = baseColor;

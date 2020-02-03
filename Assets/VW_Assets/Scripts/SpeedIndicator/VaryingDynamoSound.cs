@@ -9,13 +9,14 @@ public class VaryingDynamoSound : MonoBehaviour
     //float _varyingVolume;
     //float _minVolume;
 
+
     void Start()
     {
         GameObject playerController = GameObject.Find("OVRPlayerController");
         Debug.Assert(playerController, "You must add gameManager because its eventList is needed.");
         _speedIndicatorScript = playerController.GetComponent<SpeedIndicator>();
         Debug.Assert(_speedIndicatorScript, "Could'nt get the EventList from the GameManager");
-        _audioSource = gameObject.AddComponent<AudioSource>();
+        _audioSource = gameObject.GetComponent<AudioSource>();
         _audioSource.clip = _dynamoAudioClip;
         _audioSource.loop = true;
         _audioSource.Play();

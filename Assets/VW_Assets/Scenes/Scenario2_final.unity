@@ -731,10 +731,20 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 917140104734198736, guid: 70d1f08a0ad0cfb4eb8b2b53b7ad9794,
+        type: 3}
+      propertyPath: soundVolume
+      value: 0.365
+      objectReference: {fileID: 0}
     - target: {fileID: 917140104734198743, guid: 70d1f08a0ad0cfb4eb8b2b53b7ad9794,
         type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 917140104734198743, guid: 70d1f08a0ad0cfb4eb8b2b53b7ad9794,
+        type: 3}
+      propertyPath: soundVolume
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 917140104734198742, guid: 70d1f08a0ad0cfb4eb8b2b53b7ad9794,
         type: 3}
@@ -2160,6 +2170,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3708631073185828645, guid: 8847a229305029442b328671311db4a4,
+        type: 3}
+      propertyPath: audioFiles.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 3708631073185828645, guid: 8847a229305029442b328671311db4a4,
+        type: 3}
+      propertyPath: audioFiles.Array.data[2].audioName
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3708631073185828645, guid: 8847a229305029442b328671311db4a4,
+        type: 3}
+      propertyPath: audioFiles.Array.data[2].audioClip
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8847a229305029442b328671311db4a4, type: 3}

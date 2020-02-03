@@ -30,7 +30,7 @@ public class HeadInObstacles  : Feedback
     }
 
     ///Volume of the sound when you are in the obstacles.
-    [SerializeField]
+   /* [SerializeField]
     [Range(0.0f, 1.0f)]
     private float soundVolume = 0;
     public float SoundVolume
@@ -40,14 +40,6 @@ public class HeadInObstacles  : Feedback
         set
         {
             soundVolume = value;
-            if (soundVolume < 0)
-            {
-                soundVolume = 0f;
-            }
-            else if (soundVolume > 1)
-            {
-                soundVolume = 1f;
-            }
             UpdateVolume();
         }
 
@@ -55,8 +47,16 @@ public class HeadInObstacles  : Feedback
 
     public void UpdateVolume()
     {
+        if (soundVolume < 0)
+        {
+            soundVolume = 0f;
+        }
+        else if (soundVolume > 1)
+        {
+            soundVolume = 1f;
+        }
         sound.source.volume = soundVolume;
-    }
+    }*/
 
     [SerializeField]
     private AnimationCurve blackScreenOpacityCurb;
@@ -80,8 +80,8 @@ public class HeadInObstacles  : Feedback
 
     protected override void InitScene()
     {
-        sound = AudioManager.Find("InObstaclesWarningSound");
-        Debug.Assert(sound!=null, "Couldn't find the sound InObstaclesWarningSound");
+        /*sound = AudioManager.Find("InObstaclesWarningSound");
+        Debug.Assert(sound!=null, "Couldn't find the sound InObstaclesWarningSound");*/
 
         var prefabHeadCollider = Resources.Load<GameObject>("Prefabs/HeadCollider");
         Debug.Assert(prefabHeadCollider, "Couldn't find the HeadCollider prefabs in Assets.");
@@ -106,7 +106,7 @@ public class HeadInObstacles  : Feedback
     {
         UpdateBlackScreenOpacityCurb();
         UpdateDist();
-        UpdateVolume();
+    //    UpdateVolume();
         SwitchActiveState();
     }
 

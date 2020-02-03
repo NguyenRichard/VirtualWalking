@@ -29,9 +29,38 @@ public class HeadVibration  : Feedback
         _vibrationSound.DistMax = DistanceStart;
     }
 
+    ///Volume of the sound when you are in the obstacles.
+    [SerializeField]
+    [Range(0.0f, 1.0f)]
+    private float soundVolume = 0;
+    public float SoundVolume
+    {
+        get { return soundVolume; }
 
+        set
+        {
+            soundVolume = value;
+            UpdateVolume();
+        }
 
+    }
+
+    public void UpdateVolume()
+    {
+        if (soundVolume < 0)
+        {
+            soundVolume = 0f;
+        }
+        else if (soundVolume > 1)
+        {
+            soundVolume = 1f;
+        }
+        sound.volume = soundVolume;
+    }
+
+    
     private VibrationSound _vibrationSound;
+    private AudioSource sound;
 
 
     protected override void InitScene()
@@ -42,7 +71,9 @@ public class HeadVibration  : Feedback
         Debug.Assert(vibrationCollider, "Couldn't instantiate VibrationCollider");
         vibrationCollider.tag = "Head";
         _vibrationSound = vibrationCollider.GetComponent<VibrationSound>();
-        
+
+        sound = vibrationCollider.GetComponent<AudioSource>();
+
 
         GameObject centerEyeAnchor = GameObject.Find("OVRPlayerController/OVRCameraRig/TrackingSpace/CenterEyeAnchor");
         Debug.Assert(centerEyeAnchor, "You must add OVRPlayerController because its child CenterEyeAnchor is needed.");
@@ -57,6 +88,7 @@ public class HeadVibration  : Feedback
 
     protected override void UpdateParameters()
     {
+        UpdateVolume();
         UpdateDist();
         SwitchActiveState();
     }

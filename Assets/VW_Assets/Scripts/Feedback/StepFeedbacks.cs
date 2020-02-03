@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class StepFeedbacks : Feedback
 {
+    //Horizontal variation treshold between the generation of two steps.
     [SerializeField]
     private float horizontalTreshold;
     public float HorizontalTreshold
@@ -21,6 +22,7 @@ public class StepFeedbacks : Feedback
         stepDetector.distThreshold = horizontalTreshold;
     }
 
+    //Vertical variation treshold between the generation of two steps.
     [SerializeField]
     private float verticalTreshold;
     public float VerticalTreshold
@@ -38,6 +40,7 @@ public class StepFeedbacks : Feedback
         stepDetector.VerticalThreshold = verticalTreshold;
     }
 
+    //Time treshold between the generation of two steps.
     [SerializeField]
     private ulong timeTreshold;
     public ulong TimeTreshold
@@ -55,6 +58,7 @@ public class StepFeedbacks : Feedback
         stepDetector.timeThreshold = timeTreshold;
     }
 
+    //Offset on Y coordinate for the position of the step sprite.
     [SerializeField]
     private float offsetY;
     public float OffsetY
@@ -72,7 +76,37 @@ public class StepFeedbacks : Feedback
         stepDetector.offsetY = offsetY;
     }
 
+    ///Volume of the steps.
+    [SerializeField]
+    [Range(0.0f, 1.0f)]
+    private float soundVolume = 0;
+    public float SoundVolume
+    {
+        get { return soundVolume; }
+
+        set
+        {
+            soundVolume = value;
+            UpdateVolume();
+        }
+
+    }
+
+    public void UpdateVolume()
+    {
+        if (soundVolume < 0)
+        {
+            soundVolume = 0f;
+        }
+        else if (soundVolume > 1)
+        {
+            soundVolume = 1f;
+        }
+        sound.volume = soundVolume;
+    }
+
     private StepDetector stepDetector;
+    private AudioSource sound;
 
     protected override void InitScene()
     {
@@ -81,12 +115,15 @@ public class StepFeedbacks : Feedback
         GameObject dataManager = Instantiate(prefabDataManager, Vector3.zero, Quaternion.identity);
         Debug.Assert(dataManager, "Couldn't instantiate prefabDataManager");
 
+
         GameObject forwardDirection = GameObject.Find("OVRPlayerController/ForwardDirection");
         Debug.Assert(forwardDirection, "You must add OVRPlayerController because it is needed.");
 
         stepDetector = dataManager.GetComponent<StepDetector>();
+        Debug.Assert(stepDetector, "You must add a StepDetector to DataManager.");
         stepDetector.headGameObject = forwardDirection;
-
+        sound = dataManager.GetComponent<AudioSource>();
+        Debug.Assert(sound, "You must add an AudioSource to DataManager.");
         components.Add(dataManager);
 
         isInit = true;
@@ -96,6 +133,7 @@ public class StepFeedbacks : Feedback
 
     protected override void UpdateParameters()
     {
+        UpdateVolume();
         UpdateOffsetY();
         UpdateTimeTreshold();
         UpdateVerticalTreshdold();

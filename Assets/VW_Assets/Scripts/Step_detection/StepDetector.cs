@@ -110,7 +110,6 @@ public class StepDetector : MonoBehaviour {
                         //Nouveau pas detecte
                         audioSource.PlayOneShot(impact, 1f);
 
-
                         currentStep = new Step(pos - 1, dm.Timer - Time.fixedDeltaTime, new Vector2(dm.FiltPositions[pos - 1].x, dm.FiltPositions[pos - 1].z), 0, LastMaxY - dm.FiltPositions[pos - 1].y);
 
                         LastMaxY = int.MinValue;

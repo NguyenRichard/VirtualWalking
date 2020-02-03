@@ -31,7 +31,7 @@ public class VibrationSound : MonoBehaviour
 
     private void Start()
     {
-        _audioSource = gameObject.AddComponent<AudioSource>();
+        _audioSource = gameObject.GetComponent<AudioSource>();
         _audioSource.clip = _vibrationAudioClip;
         _audioSource.loop = true;
     }
@@ -40,7 +40,7 @@ public class VibrationSound : MonoBehaviour
         if (!isInWall)
         {
             //Debug.Log("IN THE WALL");
-            _audioSource.volume = 1;
+          //  _audioSource.volume = 1;
             _audioSource.Play();
         }
         else

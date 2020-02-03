@@ -91,4 +91,15 @@ public abstract class Feedback : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        foreach(var component in components)
+        {
+            if(component != null)
+            {
+                Destroy(component);
+            }
+        }
+    }
+
 }
