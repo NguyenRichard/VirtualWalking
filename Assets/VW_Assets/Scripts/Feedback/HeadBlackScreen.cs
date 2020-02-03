@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HeadInObstacles  : Feedback
+public class HeadBlackScreen : Feedback
 {
     ///Distance where the black screen start to appear.
     [SerializeField]

@@ -19,8 +19,8 @@ public class QuestDebug : MonoBehaviour
     private Canvas UICanvas;
 
     private GameObject feedbackManager;
-    private HeadInObstacles headInObstacles;
-    private HandInObstacle handInObstacle;
+    private HeadBlackScreen headInObstacles;
+    private HandVibrations handInObstacle;
 
     private CalculateCollisions calculateCollisions;
     private GameObject collisionDetector;
@@ -57,8 +57,8 @@ public class QuestDebug : MonoBehaviour
         DebugUIBuilder.instance.AddButton("Start", startRecording);
 
         feedbackManager = GameObject.Find("FeedbackManager");
-        headInObstacles = feedbackManager.GetComponent<HeadInObstacles>();
-        handInObstacle = feedbackManager.GetComponent<HandInObstacle>();
+        headInObstacles = feedbackManager.GetComponent<HeadBlackScreen>();
+        handInObstacle = feedbackManager.GetComponent<HandVibrations>();
 
         var prefabCollisionDetector = Resources.Load<GameObject>("Prefabs/CollisionDetector");
         collisionDetector = Instantiate(prefabCollisionDetector, Vector3.zero, Quaternion.identity);

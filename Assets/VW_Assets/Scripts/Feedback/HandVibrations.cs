@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HandInObstacle : Feedback
+public class HandVibrations : Feedback
 {
     [SerializeField]
     private float distanceStart = 0;
