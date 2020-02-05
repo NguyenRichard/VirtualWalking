@@ -761,6 +761,16 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 917140104734198742, guid: 70d1f08a0ad0cfb4eb8b2b53b7ad9794,
+        type: 3}
+      propertyPath: _lightIntensityCurb.m_Curve.Array.data[1].value
+      value: 2.000864
+      objectReference: {fileID: 0}
+    - target: {fileID: 917140104734198742, guid: 70d1f08a0ad0cfb4eb8b2b53b7ad9794,
+        type: 3}
+      propertyPath: _lightIntensityCurb.m_Curve.Array.data[1].time
+      value: 1.010157
+      objectReference: {fileID: 0}
     - target: {fileID: 220073560, guid: 70d1f08a0ad0cfb4eb8b2b53b7ad9794, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -2687,7 +2697,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimalSpeed: 1.1111112
   maximalSpeed: 2.2222223
-  lerpEffect: 1.5
+  lerpEffect: 0.5
   speedIndicator: 0
 --- !u!1001 &781828128
 PrefabInstance:
